@@ -43,8 +43,17 @@ function Footer() {
                 />
 
                 <li>{team.name}</li>
+
                 <li>{team.firstName}</li>
-                <li>{team.gitHub}</li>
+                <li>
+                  <a href={team.gitHub}>
+                    <img
+                      className="github"
+                      src="/src/assets/icons8-github-50.png"
+                      alt="logo github"
+                    />
+                  </a>
+                </li>
               </li>
             </ul>
           </section>

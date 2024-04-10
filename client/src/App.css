@@ -12,13 +12,19 @@
   src: url("/src/assets/font/quantum_4/Quantum.otf");
 }
 * {
-  background-image: url("/src/assets/bgMain/bgspace.jpg");
   margin: 0;
   padding: 0;
+}
+body {
+  background-image: url("/src/assets/bgMain/fond-ecran-abstrait-nebuleuse-ultra-detaille-9.jpg");
+  background-size: cover;
 }
 h1,
 h2 {
   font-family: "astro";
+}
+h3 {
+  font-family: "quantumn";
 }
 .header {
   height: 110px;
