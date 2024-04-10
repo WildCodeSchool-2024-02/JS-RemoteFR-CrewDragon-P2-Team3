@@ -6,11 +6,32 @@
   font-family: "astro";
   src: url("/src/assets/font/astro/astro.ttf");
 }
-@font-face {
-  font-family: "astro";
-  src: url("/src/assets/font/astro/astro.ttf");
-}
+
 @font-face {
   font-family: "quantumn";
   src: url("/src/assets/font/quantum_4/Quantum.otf");
+}
+* {
+  background-image: url("/src/assets/bgMain/bgspace.jpg");
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2 {
+  font-family: "astro";
+}
+.header {
+  height: 110px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  color: white;
+}
+
+.header h1 {
+  text-align: center;
+  font-size: xxx-large;
 }
