@@ -7,10 +7,27 @@
   src: url("/src/assets/font/astro/astro.ttf");
 }
 @font-face {
-  font-family: "astro";
-  src: url("/src/assets/font/astro/astro.ttf");
-}
-@font-face {
   font-family: "quantumn";
   src: url("/src/assets/font/quantum_4/Quantum.otf");
+}
+
+* {
+  font-family: "good_timing";
+}
+footer {
+  text-align: center;
+}
+.teamcontainer {
+  display: flex;
+  flex-direction: space-between;
+}
+ul {
+  list-style: none;
+}
+li {
+  display: flex;
+  flex-direction: row;
+}
+.avatar {
+  width: 50px;
 }
