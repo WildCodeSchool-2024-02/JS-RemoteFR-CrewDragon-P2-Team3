@@ -1,8 +1,31 @@
+@font-face {
+  font-family: "good_timing";
+  src: url("/src/assets/font/good_timing/good\ timing\ bd.otf");
+}
+@font-face {
+  font-family: "astro";
+  src: url("/src/assets/font/astro/astro.ttf");
+}
+
+@font-face {
+  font-family: "quantumn";
+  src: url("/src/assets/font/quantum_4/Quantum.otf");
+}
 * {
   margin: 0;
   padding: 0;
 }
-
+body {
+  background-image: url("/src/assets/bgMain/fond-ecran-abstrait-nebuleuse-ultra-detaille-9.jpg");
+  background-size: cover;
+}
+h1,
+h2 {
+  font-family: "astro";
+}
+h3 {
+  font-family: "quantumn";
+}
 .header {
   height: 110px;
   padding-bottom: 5px;
@@ -12,12 +35,6 @@
   justify-content: center;
   align-content: center;
   color: white;
-  background: linear-gradient(
-    36deg,
-    rgba(50, 0, 186, 1) 0%,
-    rgba(150, 0, 189, 1) 69%,
-    rgba(187, 0, 175, 1) 100%
-  );
 }
 
 .header h1 {
