@@ -4,7 +4,7 @@ function Card() {
   return (
     <div className="cardInfo">
       <div className="infoPlanete">Planète :</div>
-      <img className="image" src="./src/assets/images/Terra.png" alt="" />
+      <img className="image" src="./src/assets/images/Terra.png" alt="Earth" />
       <div className="infoText">
         <span className="info">Information :</span>
         <br />
