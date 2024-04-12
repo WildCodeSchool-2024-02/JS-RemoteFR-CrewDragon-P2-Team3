@@ -54,7 +54,7 @@ function Canva() {
     };
   }, []);
 
-  return <div ref={canvasRef} />;
+  return <div className="canva" ref={canvasRef} />;
 }
 
 export default Canva;
