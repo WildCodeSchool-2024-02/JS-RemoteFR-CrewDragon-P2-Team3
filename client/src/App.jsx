@@ -1,12 +1,17 @@
-import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Canva from "./components/Canva";
 import Card from "./components/Card";
+import "./App.css";
 
 function App() {
   return (
-    <div>
-      <h1>Notre Projet</h1>
+    <>
+      <Header />
+      <Canva />
       <Card />
-    </div>
+      <Footer />
+    </>
   );
 }
 

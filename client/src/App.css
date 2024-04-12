@@ -1,12 +1,49 @@
-html {
-  background-color: black;
+@font-face {
+  font-family: "good_timing";
+  src: url("/src/assets/font/good_timing/good\ timing\ bd.otf");
+}
+@font-face {
+  font-family: "astro";
+  src: url("/src/assets/font/astro/astro.ttf");
 }
 
-h1 {
+@font-face {
+  font-family: "quantumn";
+  src: url("/src/assets/font/quantum_4/Quantum.otf");
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url("/src/assets/bgMain/fond-ecran-abstrait-nebuleuse-ultra-detaille-9.jpg");
+  background-size: cover;
+}
+h1,
+h2 {
+  font-family: "astro";
+  color: white;
+}
+h3 {
+  font-family: "quantumn";
+}
+.header {
+  height: 110px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   color: white;
 }
 
-.cardInfo {
+.header h1 {
+  text-align: center;
+  font-size: xxx-large;
+}
+
+.CardInfo {
   display: flex;
   text-align: center;
   align-items: center;
