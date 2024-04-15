@@ -26,7 +26,14 @@ body {
   overflow-x: hidden;
   padding: 0;
 }
-
+nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
 h1,
 h2 {
   font-family: "astro";

@@ -1,17 +1,18 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Canva from "./components/Canva";
-import Card from "./components/Card";
+import { Link, Outlet } from "react-router-dom";
+
 import "./App.css";
 
 function App() {
   return (
-    <div className="app-container">
-      <Header />
-      <Canva className="canva" />
-      <Card />
-      <Footer />
-    </div>
+    <>
+      <nav className="nav">
+        <Link to="/">Home</Link>
+        <Link to="/Map">Map</Link>
+      </nav>
+      <main>
+        <Outlet />
+      </main>
+    </>
   );
 }
 
