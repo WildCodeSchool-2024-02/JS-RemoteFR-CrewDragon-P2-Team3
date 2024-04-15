@@ -63,7 +63,7 @@ h3 {
   justify-content: center;
 }
 
-.canvas {
+canvas {
   overflow-x: hidden;
   border: solid 5px white;
   border-radius: 10px;
