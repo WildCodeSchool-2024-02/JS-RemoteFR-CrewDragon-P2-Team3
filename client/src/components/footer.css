@@ -11,6 +11,11 @@
   src: url("/src/assets/font/quantum_4/Quantum.otf");
 }
 
+
+* {
+  font-family: "good_timing";
+}
+
 h3 {
   font-size: 2em;
 }
