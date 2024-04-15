@@ -6,12 +6,12 @@ import "./App.css";
 
 function App() {
   return (
-    <>
+    <div className="app-container">
       <Header />
-      <Canva />
+      <Canva className="canva" />
       <Card />
       <Footer />
-    </>
+    </div>
   );
 }
 
