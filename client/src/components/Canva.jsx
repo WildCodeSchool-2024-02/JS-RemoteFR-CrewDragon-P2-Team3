@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import backGround from "../assets/images/bgspace.jpg";
