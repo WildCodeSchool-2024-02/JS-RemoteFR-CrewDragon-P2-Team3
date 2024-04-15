@@ -3,6 +3,7 @@
   font-family: "good_timing";
   src: url("/src/assets/font/good_timing/good\ timing\ bd.otf");
 }
+
 @font-face {
   font-family: "astro";
   src: url("/src/assets/font/astro/astro.ttf");
@@ -12,29 +13,31 @@
   font-family: "quantumn";
   src: url("/src/assets/font/quantum_4/Quantum.otf");
 }
+
 * {
   margin: 0;
 
   box-sizing: border-box;
 }
+
 body {
   background-image: url("/src/assets/bgMain/fond-ecran-abstrait-nebuleuse-ultra-detaille-9.jpg");
   background-repeat: no-repeat;
   max-width: 100vw;
   overflow-x: hidden;
-
   padding: 0;
 }
 
-}
 h1,
 h2 {
   font-family: "astro";
   color: white;
 }
+
 h3 {
   font-family: "quantumn";
 }
+
 .header {
   height: 110px;
   padding-bottom: 5px;
@@ -43,14 +46,13 @@ h3 {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-
   color: white;
   margin: 10px 0;
 }
+
 h3 {
   font-family: "quantumn";
 }
-
 
 .header h1 {
   text-align: center;
@@ -61,7 +63,8 @@ h3 {
   display: flex;
   justify-content: center;
 }
-canvas {
+
+.canvas {
   overflow-x: hidden;
   border: solid 5px white;
   border-radius: 10px;
@@ -72,7 +75,6 @@ canvas {
 
 
 .CardInfo {
-
   display: flex;
   text-align: center;
   align-items: center;
@@ -92,11 +94,13 @@ canvas {
   text-decoration: underline;
   font-weight: 900;
 }
+
 .image {
   padding-top: 30px;
   width: 150px;
   height: 150px;
 }
+
 .info {
   color: red;
   text-decoration: underline;
