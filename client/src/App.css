@@ -26,11 +26,16 @@ body {
   overflow-x: hidden;
   padding: 0;
 }
-nav {
+.nav {
+  display: none;
+}
+.navBar {
   display: flex;
   justify-content: space-evenly;
 }
 a {
+  padding: 5px;
+
   text-decoration: none;
   color: white;
 }
