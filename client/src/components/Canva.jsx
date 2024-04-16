@@ -1,5 +1,23 @@
-import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { useEffect, useRef } from "react";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
+
+// Import des textures
+import planetTexture from "../assets/images/sun8k.jpg";
+import mercuryT from "../assets/images/mercury8k.jpg";
+import venusT from "../assets/images/venus8k.jpg";
+import earthT from "../assets/images/earth8k.jpg";
+import marsT from "../assets/images/mars8k.jpg";
+import jupiterT from "../assets/images/jupiter8k.jpg";
+import saturnT from "../assets/images/saturn8k.jpg";
+import uranusT from "../assets/images/uranus2k.jpg";
+import neptuneT from "../assets/images/neptune2k.jpg";
+
+// Import des background
+import backGroundStar from "../assets/images/stars8k.jpg";
 import backGround from "../assets/images/bgspace.jpg";
 
 function Canva() {
@@ -7,48 +25,93 @@ function Canva() {
 
   useEffect(() => {
     const scene = new THREE.Scene();
+    scene.background = new THREE.TextureLoader().load(backGround);
+
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000
+      4000
     );
-    camera.position.set(0, 0, 110);
+    camera.position.set(0, 0, 50);
 
+    // scene sphere
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    const geometry = new THREE.SphereGeometry(500, 500, 500).scale(-1, 1, 1);
-    const wireframe = new THREE.WireframeGeometry(geometry);
-    const line = new THREE.LineSegments(wireframe);
-
-    line.material.depthTest = false;
-    line.material.opacity = 0.05;
-    line.material.transparent = true;
-    scene.add(line);
-    const texture = new THREE.TextureLoader().load(backGround);
-    const material = new THREE.MeshBasicMaterial({ map: texture });
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
     const canvasElement = canvasRef.current;
     canvasElement.appendChild(renderer.domElement);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    const sphereScene = new THREE.SphereGeometry(1000, 1000, 1000).scale(
+      -1,
+      1,
+      1
+    );
 
+    // OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.25;
+    controls.maxDistance = 2000;
+
+    // add sun
+    const textureLoad = new THREE.TextureLoader();
+    const sunGeometry = new THREE.SphereGeometry(15, 32, 16);
+    const sunMaterial = new THREE.MeshBasicMaterial({
+      map: textureLoad.load(planetTexture),
+    });
+    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+
+    // Add Scene
+    const texture = new THREE.TextureLoader().load(backGroundStar);
+    const material = new THREE.MeshBasicMaterial({ map: texture });
+    const mesh = new THREE.Mesh(sphereScene, material);
+    scene.add(mesh);
+    scene.add(sun);
+
+    // Création des planètes
+    const createPlanet = (size, textureT, position) => {
+      const geometry = new THREE.SphereGeometry(size, 32, 32);
+      const materialP = new THREE.MeshBasicMaterial({
+        map: textureLoad.load(textureT),
+      });
+      const planet = new THREE.Mesh(geometry, materialP);
+      planet.position.copy(position);
+      scene.add(planet);
+    };
+    // Ajout de nouvelle planètes
+    createPlanet(3, mercuryT, new THREE.Vector3(40, 0, 0));
+    createPlanet(3, venusT, new THREE.Vector3(70, 0, 0));
+    createPlanet(3, earthT, new THREE.Vector3(120, 0, 0));
+    createPlanet(3, marsT, new THREE.Vector3(160, 0, 0));
+    createPlanet(3, jupiterT, new THREE.Vector3(160, 0, 0));
+    createPlanet(3, saturnT, new THREE.Vector3(220, 0, 0));
+    createPlanet(3, uranusT, new THREE.Vector3(300, 0, 0));
+    createPlanet(3, neptuneT, new THREE.Vector3(360, 0, 0));
+
+    // Post-processing
+    const composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
+
+    // Config post-processing
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      10, // Intensité de la lueur
+      1, // Rayon de la lueur
+      0.85 // Seuil de luminosité
+    );
+    composer.addPass(bloomPass);
+
+    // Animation de rotation
     const animate = () => {
       requestAnimationFrame(animate);
-      line.rotation.x += 0.0005;
-      line.rotation.y += 0.0005;
-      line.rotation.z += 0.0005;
-      mesh.rotation.x += 0.0005;
-      mesh.rotation.y += 0.0005;
-      mesh.rotation.z += 0.0005;
-      renderer.render(scene, camera);
+      mesh.rotation.y += 0.00005;
+      controls.update();
+      composer.render();
     };
-
     animate();
 
     return () => {
-      geometry.dispose();
-      wireframe.dispose();
+      sphereScene.dispose();
       renderer.dispose();
       canvasElement.removeChild(renderer.domElement);
     };
