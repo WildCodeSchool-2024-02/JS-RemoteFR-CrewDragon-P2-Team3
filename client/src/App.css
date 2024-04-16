@@ -14,6 +14,7 @@
 }
 
 * {
+  color: white;
   margin: 0;
 
   box-sizing: border-box;
@@ -34,18 +35,20 @@ body {
   justify-content: space-evenly;
 }
 a {
+  font-family: "astro";
+  font-size: 1.25em;
   padding: 5px;
 
   text-decoration: none;
   color: white;
 }
-h1,
-h2 {
+h1 {
   font-family: "astro";
   color: white;
 }
 
-h3 {
+h3,
+h2 {
   font-family: "quantumn";
 }
 
@@ -69,7 +72,27 @@ h3 {
   text-align: center;
   font-size: xxx-large;
 }
-
+.section1 {
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.section1 h2 {
+  font-size: 2.5em;
+  text-decoration: underline;
+}
+.section1 p {
+  font-family: "good_timing";
+  font-size: 1.5em;
+  padding: 2rem;
+}
 .canva {
   display: flex;
   justify-content: center;
