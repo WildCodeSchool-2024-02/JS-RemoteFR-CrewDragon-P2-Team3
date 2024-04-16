@@ -1,5 +1,3 @@
-import "./footer.css";
-
 const teamlist = [
   {
     name: "Darras",
