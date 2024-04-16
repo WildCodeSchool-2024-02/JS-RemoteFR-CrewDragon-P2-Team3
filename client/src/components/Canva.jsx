@@ -68,7 +68,7 @@ function Canva() {
     scene.add(sun);
 
     // Création des planètes
-    const createPlanet = (size, textureT, position) => {
+    const createPlanet = (size, textureT, position, orbitSpeed) => {
       const geometry = new THREE.SphereGeometry(size, 32, 32);
       const materialP = new THREE.MeshBasicMaterial({
         map: textureLoad.load(textureT),
@@ -76,16 +76,32 @@ function Canva() {
       const planet = new THREE.Mesh(geometry, materialP);
       planet.position.copy(position);
       scene.add(planet);
+
+      // Fonction de mise à jour de la position orbitale
+      const updateOrbit = () => {
+        const angle = Date.now() * orbitSpeed; // Calcul de l'angle de rotation en fonction de la vitesse orbitale
+        const orbitRadius = position.length(); // Rayon de l'orbite
+        planet.position.x = Math.cos(angle) * orbitRadius;
+        planet.position.z = Math.sin(angle) * orbitRadius;
+      };
+
+      // Appel de la fonction de mise à jour à chaque frame
+      const animateOrbit = () => {
+        updateOrbit();
+        requestAnimationFrame(animateOrbit);
+      };
+      animateOrbit();
     };
+
     // Ajout de nouvelle planètes
-    createPlanet(3, mercuryT, new THREE.Vector3(100, 0, 0));
-    createPlanet(3, venusT, new THREE.Vector3(220, 0, 0));
-    createPlanet(3, earthT, new THREE.Vector3(300, 0, 0));
-    createPlanet(3, marsT, new THREE.Vector3(420, 0, 0));
-    createPlanet(3, jupiterT, new THREE.Vector3(500, 0, 0));
-    createPlanet(3, saturnT, new THREE.Vector3(620, 0, 0));
-    createPlanet(3, uranusT, new THREE.Vector3(730, 0, 0));
-    createPlanet(3, neptuneT, new THREE.Vector3(850, 0, 0));
+    createPlanet(3, mercuryT, new THREE.Vector3(100, 0, 0), 0.0001);
+    createPlanet(3, venusT, new THREE.Vector3(220, 0, 0), 0.0008);
+    createPlanet(3, earthT, new THREE.Vector3(300, 0, 0), 0.0006);
+    createPlanet(3, marsT, new THREE.Vector3(420, 0, 0), 0.0004);
+    createPlanet(3, jupiterT, new THREE.Vector3(500, 0, 0), 0.0002);
+    createPlanet(3, saturnT, new THREE.Vector3(620, 0, 0), 0.0001);
+    createPlanet(3, uranusT, new THREE.Vector3(730, 0, 0), 0.00008);
+    createPlanet(3, neptuneT, new THREE.Vector3(850, 0, 0), 0.00006);
 
     // Post-processing
     const composer = new EffectComposer(renderer);
@@ -115,7 +131,7 @@ function Canva() {
       renderer.dispose();
       canvasElement.removeChild(renderer.domElement);
     };
-  }, []);
+  }, []); // Assurez-vous que le tableau de dépendances est vide ici
 
   return <div className="canva" ref={canvasRef} />;
 }
