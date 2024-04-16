@@ -40,7 +40,7 @@ function Canva() {
     const canvasElement = canvasRef.current;
     canvasElement.appendChild(renderer.domElement);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    const sphereScene = new THREE.SphereGeometry(1000, 1000, 1000).scale(
+    const sphereScene = new THREE.SphereGeometry(1500, 1500, 1500).scale(
       -1,
       1,
       1
@@ -78,14 +78,14 @@ function Canva() {
       scene.add(planet);
     };
     // Ajout de nouvelle planètes
-    createPlanet(3, mercuryT, new THREE.Vector3(40, 0, 0));
-    createPlanet(3, venusT, new THREE.Vector3(70, 0, 0));
-    createPlanet(3, earthT, new THREE.Vector3(120, 0, 0));
-    createPlanet(3, marsT, new THREE.Vector3(160, 0, 0));
-    createPlanet(3, jupiterT, new THREE.Vector3(160, 0, 0));
-    createPlanet(3, saturnT, new THREE.Vector3(220, 0, 0));
-    createPlanet(3, uranusT, new THREE.Vector3(300, 0, 0));
-    createPlanet(3, neptuneT, new THREE.Vector3(360, 0, 0));
+    createPlanet(3, mercuryT, new THREE.Vector3(100, 0, 0));
+    createPlanet(3, venusT, new THREE.Vector3(220, 0, 0));
+    createPlanet(3, earthT, new THREE.Vector3(300, 0, 0));
+    createPlanet(3, marsT, new THREE.Vector3(420, 0, 0));
+    createPlanet(3, jupiterT, new THREE.Vector3(500, 0, 0));
+    createPlanet(3, saturnT, new THREE.Vector3(620, 0, 0));
+    createPlanet(3, uranusT, new THREE.Vector3(730, 0, 0));
+    createPlanet(3, neptuneT, new THREE.Vector3(850, 0, 0));
 
     // Post-processing
     const composer = new EffectComposer(renderer);
