@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import desc from "../data/data";
 
 function Card({ planet }) {
-  console.info(desc);
   return (
     <div className="cardInfo">
       <div className="infoPlanete">
