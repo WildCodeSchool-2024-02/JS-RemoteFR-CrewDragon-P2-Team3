@@ -137,10 +137,10 @@ function Canva() {
   return (
     <div className="canva-container">
       <div className="canva" ref={canvasRef} />
-      {/* Affichage de la carte */}
+
       <div
         className="card"
-        style={{ position: "absolute", top: 250, left: -40 }}
+        style={{ position: "absolute", top: 250, left: -120 }}
       >
         <Card
           planet={{
