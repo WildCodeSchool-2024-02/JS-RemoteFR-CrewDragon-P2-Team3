@@ -17,7 +17,7 @@ function Map() {
       .get("https://api.le-systeme-solaire.net/rest/bodies/")
       // Use this data to update the state
       .then((response) => {
-        setPlanet(response.data.bodies[1]);
+        setPlanet(response.data.bodies[243]);
       });
   }, []);
 
