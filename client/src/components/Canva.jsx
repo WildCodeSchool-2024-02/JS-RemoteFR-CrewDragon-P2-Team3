@@ -1,9 +1,10 @@
-import * as THREE from "three";
 import { useEffect, useRef } from "react";
+import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
+import Card from "./Card"; // Importez le composant Card
 
 // Import des textures
 import planetTexture from "../assets/images/sun8k.jpg";
@@ -133,7 +134,27 @@ function Canva() {
     };
   }, []);
 
-  return <div className="canva" ref={canvasRef} />;
+  return (
+    <div className="canva-container">
+      <div className="canva" ref={canvasRef} />
+      {/* Affichage de la carte */}
+      <div
+        className="card"
+        style={{ position: "absolute", top: 250, left: -40 }}
+      >
+        <Card
+          planet={{
+            name: "Earth",
+            englishName: "Earth",
+            density: 5.52,
+            gravity: 9.8,
+            dimension: "12756 km",
+            bodyType: "planet",
+          }}
+        />
+      </div>
+    </div>
+  );
 }
 
 export default Canva;
