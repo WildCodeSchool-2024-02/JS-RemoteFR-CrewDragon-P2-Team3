@@ -17,7 +17,6 @@ import uranusT from "../assets/images/uranus2k.jpg";
 import neptuneT from "../assets/images/neptune2k.jpg";
 
 // Import des background
-
 import backGroundStar0 from "../assets/images/spacebk.jpg";
 import backGroundStar1 from "../assets/images/spaceDN.jpg";
 import backGroundStar2 from "../assets/images/spaceft.jpg";
@@ -34,7 +33,6 @@ function Canva() {
     canvasElement.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-
     // scene cube
     const cubeTextureLoader = new THREE.CubeTextureLoader();
     scene.background = cubeTextureLoader.load([
@@ -78,49 +76,6 @@ function Canva() {
         map: textureLoad.load(textureT),
       });
       const planet = new THREE.Mesh(geometry, material);
-      4000
-    );
-    camera.position.set(0, 0, 50);
-
-    // scene sphere
-    const renderer = new THREE.WebGLRenderer();
-    const canvasElement = canvasRef.current;
-    canvasElement.appendChild(renderer.domElement);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    const sphereScene = new THREE.SphereGeometry(1500, 1500, 1500).scale(
-      -1,
-      1,
-      1
-    );
-
-    // OrbitControls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.25;
-    controls.maxDistance = 2000;
-
-    // add sun
-    const textureLoad = new THREE.TextureLoader();
-    const sunGeometry = new THREE.SphereGeometry(15, 32, 16);
-    const sunMaterial = new THREE.MeshBasicMaterial({
-      map: textureLoad.load(planetTexture),
-    });
-    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-
-    // Add Scene
-    const texture = new THREE.TextureLoader().load(backGroundStar);
-    const material = new THREE.MeshBasicMaterial({ map: texture });
-    const mesh = new THREE.Mesh(sphereScene, material);
-    scene.add(mesh);
-    scene.add(sun);
-
-    // Création des planètes
-    const createPlanet = (size, textureT, position, orbitSpeed) => {
-      const geometry = new THREE.SphereGeometry(size, 32, 32);
-      const materialP = new THREE.MeshBasicMaterial({
-        map: textureLoad.load(textureT),
-      });
-      const planet = new THREE.Mesh(geometry, materialP);
       planet.position.copy(position);
       scene.add(planet);
 
@@ -167,7 +122,6 @@ function Canva() {
     // Animation de rotation
     const animate = () => {
       requestAnimationFrame(animate);
-
       controls.update();
       sunComposer.render();
     };
@@ -177,7 +131,7 @@ function Canva() {
       renderer.dispose();
       canvasElement.removeChild(renderer.domElement);
     };
-  }, []); // Assurez-vous que le tableau de dépendances est vide ici
+  }, []);
 
   return <div className="canva" ref={canvasRef} />;
 }
