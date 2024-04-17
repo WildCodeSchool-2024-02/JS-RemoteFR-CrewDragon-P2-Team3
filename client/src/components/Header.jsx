@@ -1,9 +1,10 @@
 function Header() {
   return (
     <header className="header">
-      <h1>Star-Wild:</h1>
-
-      <h2>L'odyssey de la wild</h2>
+      <h1>
+        Star-Wild: <br />
+        L'odyssey de la wild
+      </h1>
     </header>
   );
 }

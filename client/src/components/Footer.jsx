@@ -1,29 +1,27 @@
-import "./footer.css";
-
 const teamlist = [
   {
     name: "Darras",
     firstName: "Sacha",
     gitHub: "https://github.com/Sachdarras",
-    Avatar: "/src/assets/AvatarFooter/AvatarSacha.jpg",
+    Avatar: "./src/assets/AvatarFooter/AvatarSacha.jpg",
   },
   {
     name: "Chetot",
     firstName: "Aurélien",
     gitHub: "https://github.com/Sachdarras",
-    Avatar: "/src/assets/AvatarFooter/AvatarAUREL.jpg",
+    Avatar: "./src/assets/AvatarFooter/AvatarAUREL.jpg",
   },
   {
     name: "Herpoux",
     firstName: "Franck",
     gitHub: "https://github.com/Moonlow31",
-    Avatar: "/src/assets/AvatarFooter/AvatarFranck.jpg",
+    Avatar: "./src/assets/AvatarFooter/AvatarFranck.jpg",
   },
   {
     name: "Laquerriere",
     firstName: "Fabien",
     gitHub: "https://github.com/FabienLqr",
-    Avatar: "/src/assets/AvatarFooter/AvatarFab.jpg",
+    Avatar: "./src/assets/AvatarFooter/AvatarFab.jpg",
   },
 ];
 
