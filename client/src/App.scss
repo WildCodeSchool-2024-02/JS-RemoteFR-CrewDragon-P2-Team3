@@ -24,14 +24,15 @@
     max-width: 100vw;
     overflow-x: hidden;
     padding: 0;
-    h1,
-    h2 {
+    h1 {
       font-family: "astro";
       color: white;
     }
+    h2,
     h3 {
+      color: white;
       font-family: "quantumn";
-      font-size: 2em;
+      font-size: 3em;
     }
     /*Header*/
     .header {
@@ -116,7 +117,35 @@
       padding: 1em;
       border: 1px solid white;
     }
-
+    /*Section 2 pret pour le voyage*/
+    .s2container {
+      display: flex;
+      justify-content: center;
+      margin: 50px 50px;
+    }
+    .section2 {
+      position: relative;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 1px solid white;
+    }
+    .mapLink {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-indent: -9999px;
+    }
+    .section2 h2:hover {
+      color: yellow;
+      cursor: pointer;
+    }
     /*3D canva*/
     .canva {
       display: flex;
