@@ -7,7 +7,7 @@ import Canva from "../components/Canva";
 import Card from "../components/Card";
 import Nav from "../components/Nav";
 
-import "../App.css";
+import "../App.scss";
 
 function Map() {
   const [planet, setPlanet] = useState({});
