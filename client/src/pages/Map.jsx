@@ -13,6 +13,7 @@ function Map() {
   const [planet, setPlanet] = useState({});
 
   useEffect(() => {
+    window.scrollTo(0, 285);
     axios
       .get("https://api.le-systeme-solaire.net/rest/bodies/")
       // Use this data to update the state
