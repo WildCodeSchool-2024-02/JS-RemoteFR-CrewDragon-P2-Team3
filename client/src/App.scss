@@ -212,6 +212,18 @@
     width: 20%;
     height: 30%;
     padding: 10px;
+    .closeButtonContainer {
+      position: absolute;
+      left: 450px;
+    }
+    .closeButton {
+      color: yellow;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    .closeButton:hover {
+      color: red;
+    }
     .infoPlanete {
       color: red;
       font-size: 1.8rem;
