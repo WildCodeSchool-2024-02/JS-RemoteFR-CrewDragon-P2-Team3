@@ -27,6 +27,7 @@ import backGroundStar5 from "../assets/images/spaceUP.jpg";
 
 function Canva() {
   const canvasRef = useRef(null);
+  const planets = useRef([]);
 
   useEffect(() => {
     const renderer = new THREE.WebGLRenderer();
@@ -71,14 +72,16 @@ function Canva() {
     scene.add(sun);
 
     // Création des planètes
-    const createPlanet = (size, textureT, position, orbitSpeed) => {
+    const createPlanet = (size, textureT, position, orbitSpeed, planetName) => {
       const geometry = new THREE.SphereGeometry(size, 32, 32);
-      const material = new THREE.MeshBasicMaterial({
+      const material = new THREE.MeshStandardMaterial({
         map: textureLoad.load(textureT),
       });
       const planet = new THREE.Mesh(geometry, material);
+      planet.name = planetName;
       planet.position.copy(position);
       scene.add(planet);
+      planets.current.push(planet);
 
       // Fonction de mise à jour de la position orbitale
       const updateOrbit = () => {
@@ -97,14 +100,57 @@ function Canva() {
     };
 
     // Ajout de nouvelle planètes
-    createPlanet(12, mercuryT, new THREE.Vector3(800, 0, 0), 0.00001);
-    createPlanet(28, venusT, new THREE.Vector3(1200, 0, 0), 0.00003);
-    createPlanet(36, earthT, new THREE.Vector3(1800, 0, 0), 0.00002);
-    createPlanet(28, marsT, new THREE.Vector3(2400, 0, 0), 0.00008);
-    createPlanet(60, jupiterT, new THREE.Vector3(3000, 0, 0), 0.00001);
-    createPlanet(48, saturnT, new THREE.Vector3(3600, 0, 0), 0.00004);
-    createPlanet(32, uranusT, new THREE.Vector3(4000, 0, 0), 0.00006);
-    createPlanet(28, neptuneT, new THREE.Vector3(4400, 0, 0), 0.00007);
+    createPlanet(
+      12,
+      mercuryT,
+      new THREE.Vector3(800, 0, 0),
+      0.00001,
+      "mercure"
+    );
+    createPlanet(28, venusT, new THREE.Vector3(1200, 0, 0), 0.00003, "venus");
+    createPlanet(36, earthT, new THREE.Vector3(1800, 0, 0), 0.00002, "terre");
+    createPlanet(28, marsT, new THREE.Vector3(2400, 0, 0), 0.00008, "mars");
+    createPlanet(
+      60,
+      jupiterT,
+      new THREE.Vector3(3000, 0, 0),
+      0.00001,
+      "jupiter"
+    );
+    createPlanet(48, saturnT, new THREE.Vector3(3600, 0, 0), 0.00004, "saturn");
+    createPlanet(32, uranusT, new THREE.Vector3(4000, 0, 0), 0.00006, "uranus");
+    createPlanet(
+      28,
+      neptuneT,
+      new THREE.Vector3(4400, 0, 0),
+      0.00007,
+      "neptune"
+    );
+
+    const onMouseClick = (event) => {
+      const canvasBounds = canvasRef.current.getBoundingClientRect();
+      const mouse = new THREE.Vector2(
+        ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1,
+        -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1
+      );
+
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(mouse, camera);
+      raycaster.params.Points.threshold = 2;
+
+      const intersects = raycaster.intersectObjects(planets.current);
+
+      if (intersects.length > 0) {
+        console.info("Planète cliquée:", intersects[0].object.name);
+        // Actions supplémentaires peuvent être définies ici
+      }
+    };
+
+    window.addEventListener("click", onMouseClick);
+
+    // Ajout du point de lumière
+    const light = new THREE.PointLight(0xffffff, 3500000);
+    scene.add(light);
 
     // Post-processing pour le soleil
     const sunComposer = new EffectComposer(renderer);
@@ -131,6 +177,7 @@ function Canva() {
     return () => {
       renderer.dispose();
       canvasElement.removeChild(renderer.domElement);
+      window.removeEventListener("click", onMouseClick);
     };
   }, []);
 
