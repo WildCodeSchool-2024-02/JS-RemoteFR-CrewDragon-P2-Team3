@@ -83,15 +83,14 @@ function Canva() {
       scene.add(planet);
       planets.current.push(planet);
 
-      // Fonction de mise à jour de la position orbitale
+      // Position orbitale
       const updateOrbit = () => {
-        const angle = Date.now() * orbitSpeed; // Calcul de l'angle de rotation en fonction de la vitesse orbitale
-        const orbitRadius = position.length(); // Rayon de l'orbite
+        const angle = Date.now() * orbitSpeed;
+        const orbitRadius = position.length();
         planet.position.x = Math.cos(angle) * orbitRadius;
         planet.position.z = Math.sin(angle) * orbitRadius;
       };
 
-      // Appel de la fonction de mise à jour à chaque frame
       const animateOrbit = () => {
         updateOrbit();
         requestAnimationFrame(animateOrbit);
@@ -99,33 +98,73 @@ function Canva() {
       animateOrbit();
     };
 
+    // Dessiner l'orbite
+    const drawOrbit = (radius) => {
+      const segments = 360;
+      const material = new THREE.LineBasicMaterial({ color: 0xffffff });
+
+      // Création des points de la ligne
+      const points = [];
+      for (let i = 0; i <= segments; i += 1) {
+        const circle = (i / segments) * Math.PI * 2;
+        const x = radius * Math.cos(circle);
+        const z = radius * Math.sin(circle);
+        points.push(new THREE.Vector3(x, 0, z));
+      }
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+      // Ajout des lignes à la scene
+      const line = new THREE.Line(geometry, material);
+      scene.add(line);
+    };
+
     // Ajout de nouvelle planètes
     createPlanet(
-      12,
+      80,
       mercuryT,
       new THREE.Vector3(800, 0, 0),
       0.00001,
       "mercure"
     );
-    createPlanet(28, venusT, new THREE.Vector3(1200, 0, 0), 0.00003, "venus");
-    createPlanet(36, earthT, new THREE.Vector3(1800, 0, 0), 0.00002, "terre");
-    createPlanet(28, marsT, new THREE.Vector3(2400, 0, 0), 0.00008, "mars");
+    drawOrbit(800);
+    createPlanet(90, venusT, new THREE.Vector3(1200, 0, 0), 0.00003, "venus");
+    drawOrbit(1200);
+    createPlanet(150, earthT, new THREE.Vector3(1800, 0, 0), 0.00002, "terre");
+    drawOrbit(1800);
+    createPlanet(100, marsT, new THREE.Vector3(2400, 0, 0), 0.00008, "mars");
+    drawOrbit(2400);
     createPlanet(
-      60,
+      210,
       jupiterT,
       new THREE.Vector3(3000, 0, 0),
       0.00001,
       "jupiter"
     );
-    createPlanet(48, saturnT, new THREE.Vector3(3600, 0, 0), 0.00004, "saturn");
-    createPlanet(32, uranusT, new THREE.Vector3(4000, 0, 0), 0.00006, "uranus");
+    drawOrbit(3000);
     createPlanet(
-      28,
+      180,
+      saturnT,
+      new THREE.Vector3(3600, 0, 0),
+      0.00004,
+      "saturn"
+    );
+    drawOrbit(3600);
+    createPlanet(
+      100,
+      uranusT,
+      new THREE.Vector3(4000, 0, 0),
+      0.00006,
+      "uranus"
+    );
+    drawOrbit(4000);
+    createPlanet(
+      105,
       neptuneT,
       new THREE.Vector3(4400, 0, 0),
       0.00007,
       "neptune"
     );
+    drawOrbit(4400);
 
     const onMouseClick = (event) => {
       const canvasBounds = canvasRef.current.getBoundingClientRect();
