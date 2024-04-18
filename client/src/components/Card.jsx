@@ -17,7 +17,7 @@ function Card() {
           setShowCard(true);
         })
         .catch((error) => {
-          console.error("Error fetching planet data:", error);
+          console.error("Error:", error);
         });
     }
   }, [planetName]);
@@ -87,7 +87,6 @@ function Card() {
           <button type="button" onClick={() => fetchData("jupiter")}>
             Afficher les informations de Jupiter
           </button>
-          {/* Ajouter d'autres boutons pour d'autres planètes si nécessaire */}
         </div>
       )}
     </div>
