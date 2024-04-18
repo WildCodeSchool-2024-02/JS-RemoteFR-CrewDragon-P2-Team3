@@ -142,16 +142,7 @@ function Canva() {
         className="card"
         style={{ position: "absolute", top: 250, left: -120 }}
       >
-        <Card
-          planet={{
-            name: "Earth",
-            englishName: "Earth",
-            density: 5.52,
-            gravity: 9.8,
-            dimension: "12756 km",
-            bodyType: "planet",
-          }}
-        />
+        <Card planet={{}} />
       </div>
     </div>
   );
