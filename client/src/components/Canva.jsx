@@ -116,7 +116,7 @@ function Canva() {
       new THREE.Vector2(window.innerWidth, window.innerHeight),
       2, // Intensité de la lueur
       1, // Rayon de la lueur
-      1 // Seuil de luminosité
+      0.5 // Seuil de luminosité
     );
     sunComposer.addPass(sunBloomPass);
 

@@ -4,6 +4,7 @@ import Nav from "../components/Nav";
 import Section1 from "../components/Section1";
 import Tableau from "../components/Tableau";
 import Section2 from "../components/Section2";
+import PlanetInfo from "../components/PlanetInfo";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <Nav />
       <Section1 />
       <Tableau />
+      <PlanetInfo />
       <Section2 />
       <Footer />
     </div>
