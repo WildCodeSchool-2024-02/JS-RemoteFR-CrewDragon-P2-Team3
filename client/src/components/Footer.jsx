@@ -63,6 +63,7 @@ function Footer() {
         ))}
       </div>
       <p> &#xA9; Copyright, Crédit by team SFAF</p>
+      <p> Credit music by Hans Zimmer</p>
     </footer>
   );
 }
