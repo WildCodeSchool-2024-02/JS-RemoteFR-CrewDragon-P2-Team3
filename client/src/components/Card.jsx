@@ -4,17 +4,27 @@ import axios from "axios";
 import desc from "../data/data";
 
 function Card() {
+  const [showCard, setShowCard] = useState(false);
   const [planetData, setPlanetData] = useState({});
-  const [showCard, setShowCard] = useState(true);
+  const [planetName, setPlanetName] = useState("");
 
   useEffect(() => {
-    window.scrollTo(0, 285);
-    axios
-      .get("https://api.le-systeme-solaire.net/rest/bodies/")
-      .then((response) => {
-        setPlanetData(response.data.bodies[20]);
-      });
-  }, []);
+    if (planetName) {
+      axios
+        .get(`https://api.le-systeme-solaire.net/rest/bodies/${planetName}`)
+        .then((response) => {
+          setPlanetData(response.data);
+          setShowCard(true);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  }, [planetName]);
+
+  const fetchData = (planetNameParam) => {
+    setPlanetName(planetNameParam);
+  };
 
   const handleCloseCard = () => {
     setShowCard(false);
@@ -26,40 +36,61 @@ function Card() {
     }
   };
 
-  return showCard ? (
-    <div className="cardInfo">
-      <div className="closeButtonContainer">
-        <div
-          className="closeButton"
-          onClick={handleCloseCard}
-          onKeyPress={handleKeyPress}
-          tabIndex={0}
-          role="button"
-        >
-          X
+  return (
+    <div>
+      {showCard && (
+        <div className="cardInfo">
+          <div className="closeButtonContainer">
+            <div
+              className="closeButton"
+              onClick={handleCloseCard}
+              onKeyPress={handleKeyPress}
+              tabIndex={0}
+              role="button"
+            >
+              X
+            </div>
+          </div>
+          <div className="infoPlanete">Nom: {planetData.name}</div>
+          <img
+            className="image"
+            src={`./src/assets/images/${planetData.name}.png`}
+            alt={planetData.name}
+          />
+          <div className="infoText">
+            <span className="info">Information :</span>
+            <br />
+            BodyType: {planetData.bodyType}
+            <br />
+            Dimension: {planetData.dimension}
+            <br />
+            Gravite: {planetData.gravity}
+            <br />
+            Densite: {planetData.density}
+            <br />
+            <span className="info">Description :</span>
+            <p>
+              Cette {planetData.bodyType} a une gravite de {planetData.gravity}{" "}
+              pour une densite de {planetData.density}. {desc[3].description}
+            </p>
+          </div>
+          <button type="button" onClick={handleCloseCard}>
+            Fermer
+          </button>
         </div>
-      </div>
-      <div className="infoPlanete">Nom: {planetData.name}</div>
-      <img className="image" src="./src/assets/images/Terra.png" alt="Earth" />
-      <div className="infoText">
-        <span className="info">Information :</span>
-        <br />
-        BodyType: {planetData.bodyType}
-        <br />
-        Dimension: {planetData.dimension}
-        <br />
-        Gravite: {planetData.gravity}
-        <br />
-        Densite: {planetData.density}
-        <br />
-        <span className="info">Description :</span>
-        <p>
-          Cette {planetData.bodyType} a une gravite de {planetData.gravity} pour
-          une densite de {planetData.density}. {desc[3].description}
-        </p>
-      </div>
+      )}
+      {!showCard && (
+        <div className="cardInfo">
+          <button type="button" onClick={() => fetchData("mars")}>
+            Afficher les informations de Mars
+          </button>
+          <button type="button" onClick={() => fetchData("jupiter")}>
+            Afficher les informations de Jupiter
+          </button>
+        </div>
+      )}
     </div>
-  ) : null;
+  );
 }
 
 Card.propTypes = {
