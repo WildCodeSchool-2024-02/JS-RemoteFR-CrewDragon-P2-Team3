@@ -29,7 +29,8 @@ function Canva() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
     const canvasElement = canvasRef.current;
     canvasElement.appendChild(renderer.domElement);
 
@@ -73,7 +74,7 @@ function Canva() {
     // Création des planètes
     const createPlanet = (size, textureT, position, orbitSpeed) => {
       const geometry = new THREE.SphereGeometry(size, 32, 32);
-      const material = new THREE.MeshBasicMaterial({
+      const material = new THREE.MeshStandardMaterial({
         map: textureLoad.load(textureT),
       });
       const planet = new THREE.Mesh(geometry, material);
@@ -105,6 +106,9 @@ function Canva() {
     createPlanet(48, saturnT, new THREE.Vector3(3600, 0, 0), 0.00004);
     createPlanet(32, uranusT, new THREE.Vector3(4000, 0, 0), 0.00006);
     createPlanet(28, neptuneT, new THREE.Vector3(4400, 0, 0), 0.00007);
+
+    const light = new THREE.PointLight(0xffffff, 3500000);
+    scene.add(light);
 
     // Post-processing pour le soleil
     const sunComposer = new EffectComposer(renderer);
