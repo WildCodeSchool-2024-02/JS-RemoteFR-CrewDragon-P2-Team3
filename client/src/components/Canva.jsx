@@ -192,9 +192,6 @@ function Canva() {
     const light = new THREE.PointLight(0xffffff, 3500000);
     scene.add(light);
 
-    const light = new THREE.PointLight(0xffffff, 3500000);
-    scene.add(light);
-
     // Post-processing pour le soleil
     const sunComposer = new EffectComposer(renderer);
     const sunRenderPass = new RenderPass(scene, camera);
@@ -230,9 +227,9 @@ function Canva() {
 
       <div
         className="card"
-        style={{ position: "absolute", top: 250, left: -120 }}
+        style={{ position: "absolute", top: 285, left: -40 }}
       >
-        <Card planet={{}} />
+        <Card />
       </div>
     </div>
   );
