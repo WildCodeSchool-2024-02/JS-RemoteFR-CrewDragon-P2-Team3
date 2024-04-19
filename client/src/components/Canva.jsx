@@ -227,7 +227,7 @@ function Canva() {
 
       <div
         className="card"
-        style={{ position: "absolute", top: 285, left: -40 }}
+        style={{ position: "absolute", top: 285, left: -120 }}
       >
         <Card />
       </div>
