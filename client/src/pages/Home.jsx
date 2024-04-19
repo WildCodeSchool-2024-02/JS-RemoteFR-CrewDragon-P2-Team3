@@ -12,9 +12,9 @@ function Home() {
       <Header />
       <Nav />
       <Section1 />
-      <Tableau />
       <PlanetInfo />
       <Section2 />
+      <Tableau />
       <Footer />
     </div>
   );
