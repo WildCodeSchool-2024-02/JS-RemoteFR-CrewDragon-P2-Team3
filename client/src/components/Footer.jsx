@@ -1,27 +1,32 @@
+import sacha from "../assets/AvatarFooter/AvatarSacha.jpg";
+import Aurel from "../assets/AvatarFooter/AvatarAUREL.jpg";
+import Franck from "../assets/AvatarFooter/AvatarFranck.jpg";
+import Fabien from "../assets/AvatarFooter/AvatarFab.jpg";
+
 const teamlist = [
   {
     name: "Darras",
     firstName: "Sacha",
     gitHub: "https://github.com/Sachdarras",
-    Avatar: "./src/assets/AvatarFooter/AvatarSacha.jpg",
+    Avatar: { sacha },
   },
   {
     name: "Chetot",
     firstName: "Aurélien",
-    gitHub: "https://github.com/Sachdarras",
-    Avatar: "./src/assets/AvatarFooter/AvatarAUREL.jpg",
+    gitHub: "https://github.com/AurelienChetot",
+    Avatar: { Aurel },
   },
   {
     name: "Herpoux",
     firstName: "Franck",
     gitHub: "https://github.com/Moonlow31",
-    Avatar: "./src/assets/AvatarFooter/AvatarFranck.jpg",
+    Avatar: { Franck },
   },
   {
     name: "Laquerriere",
     firstName: "Fabien",
     gitHub: "https://github.com/FabienLqr",
-    Avatar: "./src/assets/AvatarFooter/AvatarFab.jpg",
+    Avatar: { Fabien },
   },
 ];
 
@@ -58,6 +63,7 @@ function Footer() {
         ))}
       </div>
       <p> &#xA9; Copyright, Crédit by team SFAF</p>
+      <p> Credit music by Hans Zimmer</p>
     </footer>
   );
 }
