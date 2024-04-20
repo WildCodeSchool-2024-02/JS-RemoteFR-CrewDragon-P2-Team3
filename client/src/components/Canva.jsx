@@ -71,6 +71,7 @@ function Canva() {
       map: textureLoad.load(planetTexture),
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.name = "soleil"; // Ajout du nom
     scene.add(sun);
 
     // Création des planètes
@@ -179,7 +180,7 @@ function Canva() {
       raycaster.setFromCamera(mouse, camera);
       raycaster.params.Points.threshold = 2;
 
-      const intersects = raycaster.intersectObjects(planets.current);
+      const intersects = raycaster.intersectObjects([...planets.current, sun]); // Ajout du soleil
 
       if (intersects.length > 0) {
         console.info("Planète cliquée:", intersects[0].object.name);
