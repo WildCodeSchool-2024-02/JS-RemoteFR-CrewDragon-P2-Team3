@@ -1,10 +1,25 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import desc from "../data/data";
+import terre from "../assets/bgMain/terreInfo.jpg";
+import venus from "../assets/bgMain/venusInfo.jpg";
+import mars from "../assets/bgMain/marsInfo.jpg";
+import jupiter from "../assets/bgMain/jupiterInfo.jpg";
+import saturne from "../assets/bgMain/saturnInfo.jpg";
+import uranus from "../assets/bgMain/uranusInfo.jpg";
+
+const PlanetImg = {
+  Terre: terre,
+  Venus: venus,
+  Mars: mars,
+  Jupiter: jupiter,
+  Saturne: saturne,
+  Uranus: uranus,
+};
 
 function Card({ planetName, onClose }) {
   const [planetData, setPlanetData] = useState({});
+  const [planetImg, setPlanetImg] = useState("");
 
   useEffect(() => {
     if (planetName) {
@@ -16,6 +31,9 @@ function Card({ planetName, onClose }) {
         .catch((error) => {
           console.error("Error:", error);
         });
+    }
+    if (planetName && PlanetImg[planetName]) {
+      setPlanetImg(PlanetImg[planetName]);
     }
   }, [planetName]);
 
@@ -43,11 +61,7 @@ function Card({ planetName, onClose }) {
         </div>
       </div>
       <div className="infoPlanete">Nom: {planetData.name}</div>
-      <img
-        className="image"
-        src={`./src/assets/images/${planetData.name}.png`}
-        alt={planetData.name}
-      />
+      <img className="image" src={planetImg} alt={planetData.name} />
       <div className="infoText">
         <span className="info">Information :</span>
         <br />
@@ -62,7 +76,8 @@ function Card({ planetName, onClose }) {
         <span className="info">Description :</span>
         <p>
           Cette {planetData.bodyType} a une gravite de {planetData.gravity} pour
-          une densite de {planetData.density}. {desc[3].description}
+          une densite de {planetData.density}.{" "}
+          {planetData ? planetData.description : ""}
         </p>
       </div>
     </div>
