@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import Card from "./Card"; // Importez le composant Card
+import Card from "./Card";
 
 // Import des textures
 import planetTexture from "../assets/images/sun8k.jpg";
@@ -28,10 +28,12 @@ import backGroundStar5 from "../assets/images/spaceUP.jpg";
 function Canva() {
   const canvasRef = useRef(null);
   const planets = useRef([]);
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   useEffect(() => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     const canvasElement = canvasRef.current;
     canvasElement.appendChild(renderer.domElement);
 
@@ -45,7 +47,6 @@ function Canva() {
       backGroundStar1,
       backGroundStar4,
       backGroundStar3,
-      renderer.setSize(window.innerWidth, window.innerHeight),
     ]);
     scene.add(cubeTextureLoader);
 
@@ -55,7 +56,7 @@ function Canva() {
       0.1,
       50000
     );
-    camera.position.set(0, 0, 1000);
+    camera.position.set(0, 0, 5000);
 
     // OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -182,7 +183,7 @@ function Canva() {
 
       if (intersects.length > 0) {
         console.info("Planète cliquée:", intersects[0].object.name);
-        // Actions supplémentaires peuvent être définies ici
+        setSelectedPlanet(intersects[0].object.name);
       }
     };
 
@@ -221,16 +222,21 @@ function Canva() {
     };
   }, []);
 
-  return (
-    <div className="canva-container">
-      <div className="canva" ref={canvasRef} />
+  const handleCloseCard = () => {
+    setSelectedPlanet(null);
+  };
 
-      <div
-        className="card"
-        style={{ position: "absolute", top: 285, left: -120 }}
-      >
-        <Card />
-      </div>
+  return (
+    <div className="canva-container" style={{ position: "relative" }}>
+      <div className="canva" ref={canvasRef} />
+      {selectedPlanet && (
+        <div
+          className="card"
+          style={{ position: "absolute", top: 10, left: -120 }}
+        >
+          <Card planetName={selectedPlanet} onClose={handleCloseCard} />
+        </div>
+      )}
     </div>
   );
 }
