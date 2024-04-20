@@ -75,7 +75,14 @@ function Canva() {
     scene.add(sun);
 
     // Création des planètes
-    const createPlanet = (size, textureT, position, orbitSpeed, planetName) => {
+    const createPlanet = (
+      size,
+      textureT,
+      position,
+      orbitSpeed,
+      rotationSpeed,
+      planetName
+    ) => {
       const geometry = new THREE.SphereGeometry(size, 32, 32);
       const material = new THREE.MeshStandardMaterial({
         map: textureLoad.load(textureT),
@@ -94,8 +101,14 @@ function Canva() {
         planet.position.z = Math.sin(angle) * orbitRadius;
       };
 
+      // Rotation sur elle-même
+      const rotatePlanet = () => {
+        planet.rotation.y += rotationSpeed;
+      };
+
       const animateOrbit = () => {
         updateOrbit();
+        rotatePlanet();
         requestAnimationFrame(animateOrbit);
       };
       animateOrbit();
@@ -127,20 +140,43 @@ function Canva() {
       mercuryT,
       new THREE.Vector3(800, 0, 0),
       0.00001,
+      0.01,
       "mercure"
     );
     drawOrbit(800);
-    createPlanet(90, venusT, new THREE.Vector3(1200, 0, 0), 0.00003, "venus");
+    createPlanet(
+      90,
+      venusT,
+      new THREE.Vector3(1200, 0, 0),
+      0.00003,
+      0.008,
+      "venus"
+    );
     drawOrbit(1200);
-    createPlanet(150, earthT, new THREE.Vector3(1800, 0, 0), 0.00002, "terre");
+    createPlanet(
+      150,
+      earthT,
+      new THREE.Vector3(1800, 0, 0),
+      0.00002,
+      0.006,
+      "terre"
+    );
     drawOrbit(1800);
-    createPlanet(100, marsT, new THREE.Vector3(2400, 0, 0), 0.00008, "mars");
+    createPlanet(
+      100,
+      marsT,
+      new THREE.Vector3(2400, 0, 0),
+      0.00008,
+      0.005,
+      "mars"
+    );
     drawOrbit(2400);
     createPlanet(
       210,
       jupiterT,
       new THREE.Vector3(3000, 0, 0),
       0.00001,
+      0.002,
       "jupiter"
     );
     drawOrbit(3000);
@@ -149,6 +185,7 @@ function Canva() {
       saturnT,
       new THREE.Vector3(3600, 0, 0),
       0.00004,
+      0.001,
       "saturn"
     );
     drawOrbit(3600);
@@ -157,6 +194,7 @@ function Canva() {
       uranusT,
       new THREE.Vector3(4000, 0, 0),
       0.00006,
+      0.007,
       "uranus"
     );
     drawOrbit(4000);
@@ -165,6 +203,7 @@ function Canva() {
       neptuneT,
       new THREE.Vector3(4400, 0, 0),
       0.00007,
+      0.003,
       "neptune"
     );
     drawOrbit(4400);
@@ -212,6 +251,7 @@ function Canva() {
     const animate = () => {
       requestAnimationFrame(animate);
       controls.update();
+      sun.rotation.y += 0.01;
       sunComposer.render();
     };
     animate();
