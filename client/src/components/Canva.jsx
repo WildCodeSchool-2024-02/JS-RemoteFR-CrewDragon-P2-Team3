@@ -182,7 +182,6 @@ function Canva() {
 
       if (intersects.length > 0) {
         console.info("Planète cliquée:", intersects[0].object.name);
-        // Actions supplémentaires peuvent être définies ici
       }
     };
 

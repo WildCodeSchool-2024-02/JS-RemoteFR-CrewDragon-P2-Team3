@@ -4,6 +4,20 @@ import voyager2 from "../assets/imagesHub/voyager2.jpg";
 import intelsat from "../assets/imagesHub/intelsat.jpg";
 import GPS from "../assets/imagesHub/GPS.jpg";
 import landsat from "../assets/imagesHub/landsat.jpg";
+import equipeApollo from "../assets/imagesHub/equipe-apollo11.jpg";
+import launchApollo from "../assets/imagesHub/launch-apollo11.jpg";
+import launchTeam from "../assets/imagesHub/launch-team.jpg";
+import moonApollo from "../assets/imagesHub/moon-apollo11.jpg";
+import iss from "../assets/imagesHub/iss.jpg";
+import issDetail from "../assets/imagesHub/issDetail.jpg";
+import issHublot from "../assets/imagesHub/isshublot.jpg";
+import Orion from "../assets/imagesHub/Orion.jpg";
+import CrewDragon from "../assets/imagesHub/crew-dragon.jpg";
+import SpaceShuttle from "../assets/imagesHub/space-shuttle.jpg";
+import curiosity from "../assets/imagesHub/curiosity.jpg";
+import curiosityLanding from "../assets/imagesHub/landingCuriosity.jpg";
+import curiosityWork from "../assets/imagesHub/curiosityWork.png";
+import curiosityView from "../assets/imagesHub/curiosityView.jpg";
 
 function CosmoHub() {
   return (
@@ -89,7 +103,7 @@ function CosmoHub() {
           </div>
         </div>
         <div className="voyager1">
-          <img src={GPS} alt="voyager1" />
+          <img src={GPS} alt="GPS" />
           <div className="satteliteText-container">
             <p className="satteliteText">
               <span className="titleText">
@@ -108,7 +122,7 @@ function CosmoHub() {
           </div>
         </div>
         <div className="voyager1">
-          <img src={landsat} alt="voyager1" />
+          <img src={landsat} alt="Landsat" />
           <div className="satteliteText-container">
             <p className="satteliteText">
               <span className="titleText">Landsat :</span>
@@ -125,6 +139,169 @@ function CosmoHub() {
             </p>
           </div>
         </div>
+      </div>
+      <h4 className="title-hub">Les missions spatiales :</h4>
+      <p className="titleText">Apollo 11 :</p>
+      <div className="apollo-container">
+        <img className="img-apollo" src={equipeApollo} alt="équipe Apollo11" />
+        <img className="img-apollo" src={launchApollo} alt="fusée Apollo11" />
+        <img className="img-apollo1" src={launchTeam} alt="atterisage lune" />
+        <img className="img-apollo1" src={moonApollo} alt="img lune" />
+      </div>
+      <div className="apolloText-container">
+        <p className="apolloText">
+          Le lundi 21 juillet 1969 reste un jalon inégalé dans l'histoire de
+          l'exploration spatiale. Les images emblématiques de l'équipe composée
+          de Neil Armstrong, Buzz Aldrin et Michael Collins, ainsi que de son
+          lancement, symbolisent l'audace et la bravoure humaines. La silhouette
+          majestueuse du vaisseau spatial s'élevant vers les cieux incarne
+          l'esprit pionnier de l'humanité. Les moments capturés lors de la
+          mission, depuis le décollage jusqu'à l'alunissage historique,
+          résonnent comme des témoins de notre capacité à surmonter les défis
+          les plus vertigineux. Ces images iconiques, telles que l'équipage
+          compact à bord du module lunaire et le pas de géant de Neil Armstrong,
+          continuent d'inspirer les générations futures à repousser les limites
+          de l'exploration spatiale. Apollo 11 demeure un rappel indélébile de
+          ce que l'humanité peut accomplir lorsque nous nous unissons dans la
+          poursuite d'un objectif commun.
+        </p>
+      </div>
+      <p className="titleText">L'ISS (Station Spatiale Internationale) :</p>
+      <div className="iss-img-container">
+        <img className="iss-img1" src={iss} alt="station iss" />
+        <img className="iss-img" src={issDetail} alt="détail de l'iss" />
+        <img className="iss-img2" src={issHublot} alt="vue du hublot" />
+      </div>
+      <div className="issText-container">
+        <p className="issText">
+          La Station spatiale internationale (ISS) représente une prouesse
+          monumentale dans l'histoire de l'exploration spatiale moderne. Les
+          images emblématiques de sa construction en orbite terrestre, avec ses
+          modules interconnectés formant une structure complexe, symbolisent la
+          coopération internationale et l'ingéniosité humaine. La silhouette
+          élégante de la station, évoluant gracieusement dans l'espace, incarne
+          l'esprit d'innovation et de collaboration qui unit les nations du
+          monde entier. Les moments inoubliables de la mission, tels que les
+          sorties extravéhiculaires des astronautes et les expériences
+          scientifiques menées dans son laboratoire en apesanteur, témoignent de
+          l'ingéniosité et de la détermination de l'humanité à explorer les
+          confins de l'espace. Ces images captivantes, telles que l'équipage
+          international travaillant en harmonie à bord de l'ISS et les vues
+          panoramiques époustouflantes de la Terre depuis l'espace, continuent
+          d'inspirer les générations futures à collaborer dans la quête de
+          découvertes scientifiques et de réalisations technologiques. L'ISS
+          demeure un symbole vivant de l'unité mondiale et de notre capacité à
+          réaliser des exploits extraordinaires lorsque nous travaillons
+          ensemble pour atteindre des objectifs communs dans l'exploration
+          spatiale.
+        </p>
+      </div>
+      <h3 className="title-hub">Les Navettes spatiales :</h3>
+      <div className="navette-container">
+        <div className="navette1">
+          <img src={Orion} alt="Orion" />
+          <div className="navetteText-container">
+            <p className="navetteText">
+              <span className="titleText">Orion :</span>
+              <br />
+              <br />
+              Orion est un vaisseau spatial conçu par la NASA pour transporter
+              des astronautes au-delà de l'orbite terrestre basse, dans le cadre
+              de missions d'exploration lointaine, telles que des missions vers
+              la Lune, des astéroïdes ou Mars. Le vaisseau spatial Orion est
+              équipé de systèmes de support de vie, de propulseurs, de
+              parachutes et d'autres équipements nécessaires pour soutenir des
+              missions longues et complexes dans l'espace profond. Avec sa
+              capacité à transporter jusqu'à six membres d'équipage, Orion
+              représente une étape importante dans les efforts de l'humanité
+              pour explorer et coloniser l'espace lointain.
+            </p>
+          </div>
+        </div>
+        <div className="navette">
+          <img src={CrewDragon} alt="CrewDragon" />
+          <div className="navetteText-container">
+            <p className="navetteText">
+              <span className="titleText">Crew Dragon :</span>
+              <br />
+              <br />
+              Crew Dragon est un vaisseau spatial développé par SpaceX, fondée
+              par Elon Musk, dans le cadre du programme Commercial Crew de la
+              NASA. Il est conçu pour transporter des astronautes vers et depuis
+              la Station spatiale internationale (ISS) et d'autres destinations
+              en orbite terrestre basse. Crew Dragon est équipé de systèmes de
+              navigation avancés, de propulseurs de manœuvre, de parachutes et
+              de sièges d'éjection pour assurer la sécurité des astronautes
+              pendant le lancement, l'amarrage et le retour sur Terre. Avec sa
+              capacité à transporter jusqu'à sept membres d'équipage, Crew
+              Dragon ouvre la voie à une nouvelle ère de voyages spatiaux
+              habités et commerciaux.
+            </p>
+          </div>
+        </div>
+        <div className="navette2">
+          <img src={SpaceShuttle} alt="Space Shuttle" />
+          <div className="navetteText-container">
+            <p className="navetteText">
+              <span className="titleText">Space Shuttle</span>
+              <br />
+              <br />
+              La navette spatiale, officiellement appelée Space Transportation
+              System (STS), a été le premier vaisseau spatial réutilisable et a
+              servi de principal moyen de transport spatial de la NASA de 1981 à
+              2011. Conçue pour transporter des astronautes et des charges
+              utiles vers l'orbite terrestre basse, la navette spatiale a permis
+              le déploiement de satellites, la construction de la Station
+              spatiale internationale (ISS) et la réalisation de nombreuses
+              missions scientifiques. Avec sa capacité à transporter jusqu'à
+              sept membres d'équipage et des charges utiles importantes dans sa
+              soute, la navette spatiale a marqué une étape importante dans
+              l'exploration et l'utilisation de l'espace par l'humanité.
+            </p>
+          </div>
+        </div>
+      </div>
+      <p className="titleText">Curiosity :</p>
+      <div className="curiosity-container">
+        <img className="curiosity-img" src={curiosityLanding} alt="curiosity" />
+        <img
+          className="curiosity-img"
+          src={curiosity}
+          alt="curiosity-Landing"
+        />
+        <img
+          className="curiosity-img1"
+          src={curiosityWork}
+          alt="curiosity-Work"
+        />
+        <img
+          className="curiosity-img1"
+          src={curiosityView}
+          alt="curiosity-View"
+        />
+      </div>
+      <div className="apolloText-container">
+        <p className="apolloText">
+          L'arrivée triomphante du rover Curiosity sur Mars représente un
+          chapitre captivant dans le récit de l'exploration spatiale moderne.
+          Les images saisissantes de son déploiement sur la surface martienne,
+          avec ses dimensions imposantes se détachant contre l'horizon lointain,
+          symbolisent l'ingéniosité et la persévérance de l'humanité. La
+          silhouette robuste du rover, parcourant avec grâce les vastes étendues
+          martiennes, incarne l'esprit d'exploration insatiable de notre espèce.
+          Les moments emblématiques de la mission, tels que ses premières images
+          à couper le souffle de la surface de Mars et ses découvertes
+          révolutionnaires sur l'histoire géologique de la planète rouge,
+          résonnent comme des témoins de notre quête incessante de connaissance.
+          Ces images empreintes de grandeur, telles que Curiosity s'aventurant
+          courageusement dans les canyons martiens et ses analyses minutieuses
+          des échantillons de sol, continuent de stimuler l'imaginaire collectif
+          et d'inspirer les générations futures à poursuivre l'exploration de
+          l'univers qui nous entoure. Curiosity demeure un symbole vivant de la
+          détermination humaine et de notre capacité à surmonter les obstacles,
+          repoussant ainsi les frontières de l'exploration spatiale vers de
+          nouveaux horizons.
+        </p>
       </div>
     </main>
   );

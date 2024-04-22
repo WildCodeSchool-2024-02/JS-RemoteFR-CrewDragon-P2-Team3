@@ -48,7 +48,7 @@ function PlanetInfo() {
         <div className="planets-container">
           <img
             className="img"
-            src="./src/assets/bgMain/saturnInfo.jpg"
+            src="./src/assets/bgMain/saturneInfo.jpg"
             alt="saturn"
           />
           <p className="planetText">Saturn</p>
