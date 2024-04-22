@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import Card from "./Card"; // Importez le composant Card
+import Card from "./Card";
 
 // Import des textures
 import planetTexture from "../assets/images/sun8k.jpg";
@@ -28,10 +28,12 @@ import backGroundStar5 from "../assets/images/spaceUP.jpg";
 function Canva() {
   const canvasRef = useRef(null);
   const planets = useRef([]);
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   useEffect(() => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     const canvasElement = canvasRef.current;
     canvasElement.appendChild(renderer.domElement);
 
@@ -45,7 +47,6 @@ function Canva() {
       backGroundStar1,
       backGroundStar4,
       backGroundStar3,
-      renderer.setSize(window.innerWidth, window.innerHeight),
     ]);
     scene.add(cubeTextureLoader);
 
@@ -55,7 +56,7 @@ function Canva() {
       0.1,
       50000
     );
-    camera.position.set(0, 0, 1000);
+    camera.position.set(0, 0, 5000);
 
     // OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -70,10 +71,18 @@ function Canva() {
       map: textureLoad.load(planetTexture),
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.name = "soleil"; // Ajout du nom
     scene.add(sun);
 
     // Création des planètes
-    const createPlanet = (size, textureT, position, orbitSpeed, planetName) => {
+    const createPlanet = (
+      size,
+      textureT,
+      position,
+      orbitSpeed,
+      rotationSpeed,
+      planetName
+    ) => {
       const geometry = new THREE.SphereGeometry(size, 32, 32);
       const material = new THREE.MeshStandardMaterial({
         map: textureLoad.load(textureT),
@@ -92,8 +101,14 @@ function Canva() {
         planet.position.z = Math.sin(angle) * orbitRadius;
       };
 
+      // Rotation sur elle-même
+      const rotatePlanet = () => {
+        planet.rotation.y += rotationSpeed;
+      };
+
       const animateOrbit = () => {
         updateOrbit();
+        rotatePlanet();
         requestAnimationFrame(animateOrbit);
       };
       animateOrbit();
@@ -125,20 +140,43 @@ function Canva() {
       mercuryT,
       new THREE.Vector3(800, 0, 0),
       0.00001,
+      0.01,
       "mercure"
     );
     drawOrbit(800);
-    createPlanet(90, venusT, new THREE.Vector3(1200, 0, 0), 0.00003, "venus");
+    createPlanet(
+      90,
+      venusT,
+      new THREE.Vector3(1200, 0, 0),
+      0.00003,
+      0.008,
+      "venus"
+    );
     drawOrbit(1200);
-    createPlanet(150, earthT, new THREE.Vector3(1800, 0, 0), 0.00002, "terre");
+    createPlanet(
+      150,
+      earthT,
+      new THREE.Vector3(1800, 0, 0),
+      0.00002,
+      0.006,
+      "terre"
+    );
     drawOrbit(1800);
-    createPlanet(100, marsT, new THREE.Vector3(2400, 0, 0), 0.00008, "mars");
+    createPlanet(
+      100,
+      marsT,
+      new THREE.Vector3(2400, 0, 0),
+      0.00008,
+      0.005,
+      "mars"
+    );
     drawOrbit(2400);
     createPlanet(
       210,
       jupiterT,
       new THREE.Vector3(3000, 0, 0),
       0.00001,
+      0.002,
       "jupiter"
     );
     drawOrbit(3000);
@@ -147,6 +185,7 @@ function Canva() {
       saturnT,
       new THREE.Vector3(3600, 0, 0),
       0.00004,
+      0.001,
       "saturn"
     );
     drawOrbit(3600);
@@ -155,6 +194,7 @@ function Canva() {
       uranusT,
       new THREE.Vector3(4000, 0, 0),
       0.00006,
+      0.007,
       "uranus"
     );
     drawOrbit(4000);
@@ -163,6 +203,7 @@ function Canva() {
       neptuneT,
       new THREE.Vector3(4400, 0, 0),
       0.00007,
+      0.003,
       "neptune"
     );
     drawOrbit(4400);
@@ -178,10 +219,10 @@ function Canva() {
       raycaster.setFromCamera(mouse, camera);
       raycaster.params.Points.threshold = 2;
 
-      const intersects = raycaster.intersectObjects(planets.current);
+      const intersects = raycaster.intersectObjects([...planets.current, sun]); // Ajout du soleil
 
       if (intersects.length > 0) {
-        console.info("Planète cliquée:", intersects[0].object.name);
+        setSelectedPlanet(intersects[0].object.name);
       }
     };
 
@@ -209,6 +250,7 @@ function Canva() {
     const animate = () => {
       requestAnimationFrame(animate);
       controls.update();
+      sun.rotation.y += 0.01;
       sunComposer.render();
     };
     animate();
@@ -220,16 +262,21 @@ function Canva() {
     };
   }, []);
 
-  return (
-    <div className="canva-container">
-      <div className="canva" ref={canvasRef} />
+  const handleCloseCard = () => {
+    setSelectedPlanet(null);
+  };
 
-      <div
-        className="card"
-        style={{ position: "absolute", top: 285, left: -120 }}
-      >
-        <Card />
-      </div>
+  return (
+    <div className="canva-container" style={{ position: "relative" }}>
+      <div className="canva" ref={canvasRef} />
+      {selectedPlanet && (
+        <div
+          className="card"
+          style={{ position: "absolute", top: 10, left: -120 }}
+        >
+          <Card planetName={selectedPlanet} onClose={handleCloseCard} />
+        </div>
+      )}
     </div>
   );
 }
