@@ -51,22 +51,22 @@ function Canva() {
     scene.add(cubeTextureLoader);
 
     const camera = new THREE.PerspectiveCamera(
-      75,
+      750,
       window.innerWidth / window.innerHeight,
       0.1,
-      50000
+      500000
     );
-    camera.position.set(0, 0, 5000);
+    camera.position.set(0, 0, 50000);
 
     // OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.2;
-    controls.maxDistance = 20000;
+    controls.maxDistance = 200000;
 
     // add sun
     const textureLoad = new THREE.TextureLoader();
-    const sunGeometry = new THREE.SphereGeometry(300, 32, 16);
+    const sunGeometry = new THREE.SphereGeometry(3000, 320, 160);
     const sunMaterial = new THREE.MeshBasicMaterial({
       map: textureLoad.load(planetTexture),
     });
@@ -83,7 +83,7 @@ function Canva() {
       rotationSpeed,
       planetName
     ) => {
-      const geometry = new THREE.SphereGeometry(size, 32, 32);
+      const geometry = new THREE.SphereGeometry(size, 320, 320);
       const material = new THREE.MeshStandardMaterial({
         map: textureLoad.load(textureT),
       });
@@ -139,77 +139,77 @@ function Canva() {
 
     // Ajout de nouvelle planètes
     createPlanet(
-      80,
+      800,
       mercuryT,
-      new THREE.Vector3(800, 0, 0),
-      0.00001,
+      new THREE.Vector3(8000, 0, 0),
+      0.00002,
       0.01,
       "mercure"
     );
-    drawOrbit(800);
+    drawOrbit(8000);
     createPlanet(
-      90,
+      900,
       venusT,
-      new THREE.Vector3(1200, 0, 0),
-      0.00003,
+      new THREE.Vector3(12000, 0, 0),
+      0.00006,
       0.008,
       "venus"
     );
-    drawOrbit(1200);
+    drawOrbit(12000);
     createPlanet(
-      150,
+      1500,
       earthT,
-      new THREE.Vector3(1800, 0, 0),
-      0.00002,
+      new THREE.Vector3(18000, 0, 0),
+      0.00004,
       0.006,
       "terre"
     );
-    drawOrbit(1800);
+    drawOrbit(18000);
     createPlanet(
-      100,
+      1000,
       marsT,
-      new THREE.Vector3(2400, 0, 0),
-      0.00008,
+      new THREE.Vector3(24000, 0, 0),
+      0.00016,
       0.005,
       "mars"
     );
-    drawOrbit(2400);
+    drawOrbit(24000);
     createPlanet(
-      210,
+      2100,
       jupiterT,
-      new THREE.Vector3(3000, 0, 0),
-      0.00001,
+      new THREE.Vector3(30000, 0, 0),
+      0.00002,
       0.002,
       "jupiter"
     );
-    drawOrbit(3000);
+    drawOrbit(30000);
     createPlanet(
-      180,
+      1800,
       saturnT,
-      new THREE.Vector3(3600, 0, 0),
-      0.00004,
+      new THREE.Vector3(36000, 0, 0),
+      0.00008,
       0.001,
       "saturn"
     );
-    drawOrbit(3600);
+    drawOrbit(36000);
     createPlanet(
-      100,
+      1000,
       uranusT,
-      new THREE.Vector3(4000, 0, 0),
-      0.00006,
+      new THREE.Vector3(40000, 0, 0),
+      0.00012,
       0.007,
       "uranus"
     );
-    drawOrbit(4000);
+    drawOrbit(40000);
     createPlanet(
-      105,
+      1050,
       neptuneT,
-      new THREE.Vector3(4400, 0, 0),
-      0.00007,
+      new THREE.Vector3(44000, 0, 0),
+      0.00014,
       0.003,
       "neptune"
     );
-    drawOrbit(4400);
+    drawOrbit(44000);
 
     const onMouseMove = (event) => {
       const canvasBounds = canvasRef.current.getBoundingClientRect();
@@ -242,7 +242,7 @@ function Canva() {
 
       const raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(mouse, camera);
-      raycaster.params.Points.threshold = 1;
+      raycaster.params.Points.threshold = 2;
 
       const intersects = raycaster.intersectObjects([...planets.current, sun]); // Ajout du soleil
 
@@ -256,7 +256,7 @@ function Canva() {
     window.addEventListener("click", onMouseClick);
 
     // Ajout du point de lumière
-    const light = new THREE.PointLight(0xffffff, 3500000);
+    const light = new THREE.PointLight(0xffffff, 390000000);
     scene.add(light);
 
     // Post-processing pour le soleil

@@ -10,6 +10,7 @@ import saturn from "../assets/bgMain/saturnInfo.jpg";
 import uranus from "../assets/bgMain/uranusInfo.jpg";
 import mercure from "../assets/bgMain/mercureInfo.jpg";
 import soleil from "../assets/bgMain/soleil.jpg";
+import neptune from "../assets/bgMain/neptuneInfo.jpg";
 
 const PlanetsImg = {
   terre,
@@ -20,6 +21,7 @@ const PlanetsImg = {
   uranus,
   mercure,
   soleil,
+  neptune,
 };
 
 function Card({ planetName, onClose }) {
