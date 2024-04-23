@@ -7,6 +7,7 @@ import App from "./App";
 
 import Home from "./pages/Home";
 import Map from "./pages/Map";
+import CosmoHub from "./pages/CosmoHub";
 
 // router creation
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/Map",
         element: <Map />,
+      },
+      {
+        path: "/CosmoHub",
+        element: <CosmoHub />,
       },
       {},
     ],

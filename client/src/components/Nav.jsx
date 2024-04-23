@@ -8,6 +8,7 @@ function App() {
       <nav className="navBar">
         <Link to="/">Home</Link>
         <Link to="/Map">Map</Link>
+        <Link to="/CosmoHub">CosmoHub</Link>
       </nav>
       <main>
         <Outlet />

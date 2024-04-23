@@ -222,7 +222,6 @@ function Canva() {
       const intersects = raycaster.intersectObjects([...planets.current, sun]); // Ajout du soleil
 
       if (intersects.length > 0) {
-        console.info("Planète cliquée:", intersects[0].object.name);
         setSelectedPlanet(intersects[0].object.name);
       }
     };
