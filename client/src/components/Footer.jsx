@@ -8,25 +8,25 @@ const teamlist = [
     name: "Darras",
     firstName: "Sacha",
     gitHub: "https://github.com/Sachdarras",
-    Avatar: { sacha },
+    Avatar: sacha,
   },
   {
     name: "Chetot",
     firstName: "Aurélien",
     gitHub: "https://github.com/AurelienChetot",
-    Avatar: { Aurel },
+    Avatar: Aurel,
   },
   {
     name: "Herpoux",
     firstName: "Franck",
     gitHub: "https://github.com/Moonlow31",
-    Avatar: { Franck },
+    Avatar: Franck,
   },
   {
     name: "Laquerriere",
     firstName: "Fabien",
     gitHub: "https://github.com/FabienLqr",
-    Avatar: { Fabien },
+    Avatar: Fabien,
   },
 ];
 
