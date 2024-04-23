@@ -93,6 +93,9 @@ function Canva() {
       scene.add(planet);
       planets.current.push(planet);
 
+      // Ajout d'un identifiant pour détecter les planètes lors du survol
+      planet.userData.isPlanet = true;
+
       // Position orbitale
       const updateOrbit = () => {
         const angle = Date.now() * orbitSpeed;
@@ -208,6 +211,28 @@ function Canva() {
     );
     drawOrbit(4400);
 
+    const onMouseMove = (event) => {
+      const canvasBounds = canvasRef.current.getBoundingClientRect();
+      const mouse = new THREE.Vector2(
+        ((event.clientX - canvasBounds.left) / canvasBounds.width) * 2 - 1,
+        -((event.clientY - canvasBounds.top) / canvasBounds.height) * 2 + 1
+      );
+
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(mouse, camera);
+
+      const intersects = raycaster.intersectObjects(scene.children, true);
+
+      if (intersects.length > 0) {
+        const planet = intersects.find(
+          (intersect) => intersect.object.userData.isPlanet
+        );
+        canvasElement.style.cursor = planet ? "pointer" : "auto";
+      } else {
+        canvasElement.style.cursor = "auto";
+      }
+    };
+
     const onMouseClick = (event) => {
       const canvasBounds = canvasRef.current.getBoundingClientRect();
       const mouse = new THREE.Vector2(
@@ -217,7 +242,7 @@ function Canva() {
 
       const raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(mouse, camera);
-      raycaster.params.Points.threshold = 2;
+      raycaster.params.Points.threshold = 1;
 
       const intersects = raycaster.intersectObjects([...planets.current, sun]); // Ajout du soleil
 
@@ -227,6 +252,7 @@ function Canva() {
       }
     };
 
+    window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("click", onMouseClick);
 
     // Ajout du point de lumière
@@ -259,6 +285,7 @@ function Canva() {
     return () => {
       renderer.dispose();
       canvasElement.removeChild(renderer.domElement);
+      window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("click", onMouseClick);
     };
   }, []);
