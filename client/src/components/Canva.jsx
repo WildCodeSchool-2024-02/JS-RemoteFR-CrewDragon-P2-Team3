@@ -48,7 +48,6 @@ function Canva() {
       backGroundStar4,
       backGroundStar3,
     ]);
-    scene.add(cubeTextureLoader);
 
     const camera = new THREE.PerspectiveCamera(
       750,
@@ -137,12 +136,75 @@ function Canva() {
       scene.add(line);
     };
 
+    // Stars random
+    const starsGeometry = new THREE.BufferGeometry();
+    const vertices = [];
+    const verticesSpeed = [];
+
+    for (let i = 0; i < 20000; i += 3) {
+      const x = THREE.MathUtils.randFloatSpread(100000);
+      const y = THREE.MathUtils.randFloatSpread(100000);
+      const z = THREE.MathUtils.randFloatSpread(100000);
+      vertices.push(x, y, z);
+      verticesSpeed.push(
+        THREE.MathUtils.randFloatSpread(0.5),
+        THREE.MathUtils.randFloatSpread(0.5),
+        THREE.MathUtils.randFloatSpread(0.5)
+      );
+    }
+
+    starsGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
+
+    const starsMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 10,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      opacity: 1,
+    });
+
+    const stars = new THREE.Points(starsGeometry, starsMaterial);
+    scene.add(stars);
+
+    const animateStars = () => {
+      const positions = starsGeometry.attributes.position.array;
+
+      for (let i = 0; i < positions.length; i += 3) {
+        positions[i] += verticesSpeed[i];
+        positions[i + 1] += verticesSpeed[i + 1];
+        positions[i + 2] += verticesSpeed[i + 2];
+
+        if (
+          positions[i] > 50000 ||
+          positions[i] < -50000 ||
+          positions[i + 1] > 50000 ||
+          positions[i + 1] < -50000 ||
+          positions[i + 2] > 50000 ||
+          positions[i + 2] < -50000
+        ) {
+          positions[i] = THREE.MathUtils.randFloatSpread(100000);
+          positions[i + 1] = THREE.MathUtils.randFloatSpread(100000);
+          positions[i + 2] = THREE.MathUtils.randFloatSpread(100000);
+        }
+      }
+
+      starsGeometry.attributes.position.needsUpdate = true;
+
+      requestAnimationFrame(animateStars);
+    };
+
+    animateStars();
+
     // Ajout de nouvelle planètes
     createPlanet(
       800,
       mercuryT,
       new THREE.Vector3(8000, 0, 0),
-      0.00002,
+      0.00001,
       0.01,
       "mercure"
     );
@@ -151,7 +213,7 @@ function Canva() {
       900,
       venusT,
       new THREE.Vector3(12000, 0, 0),
-      0.00006,
+      0.00003,
       0.008,
       "venus"
     );
@@ -160,7 +222,7 @@ function Canva() {
       1500,
       earthT,
       new THREE.Vector3(18000, 0, 0),
-      0.00004,
+      0.00002,
       0.006,
       "terre"
     );
@@ -169,7 +231,7 @@ function Canva() {
       1000,
       marsT,
       new THREE.Vector3(24000, 0, 0),
-      0.00016,
+      0.00008,
       0.005,
       "mars"
     );
@@ -178,7 +240,7 @@ function Canva() {
       2100,
       jupiterT,
       new THREE.Vector3(30000, 0, 0),
-      0.00002,
+      0.00001,
       0.002,
       "jupiter"
     );
@@ -187,7 +249,7 @@ function Canva() {
       1800,
       saturnT,
       new THREE.Vector3(36000, 0, 0),
-      0.00008,
+      0.00004,
       0.001,
       "saturn"
     );
@@ -196,7 +258,7 @@ function Canva() {
       1000,
       uranusT,
       new THREE.Vector3(40000, 0, 0),
-      0.00012,
+      0.00006,
       0.007,
       "uranus"
     );
@@ -205,7 +267,7 @@ function Canva() {
       1050,
       neptuneT,
       new THREE.Vector3(44000, 0, 0),
-      0.00014,
+      0.00007,
       0.003,
       "neptune"
     );
@@ -277,7 +339,10 @@ function Canva() {
     const animate = () => {
       requestAnimationFrame(animate);
       controls.update();
-      sun.rotation.y += 0.01;
+      sun.rotation.y += 0.001;
+      stars.rotation.y += 0.001;
+      stars.rotation.x += 0.001;
+
       sunComposer.render();
     };
     animate();
