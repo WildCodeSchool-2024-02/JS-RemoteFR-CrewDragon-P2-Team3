@@ -52,6 +52,13 @@
         font-size: xxx-large;
       }
     }
+
+    /* Audio */
+    .audio-player {
+      display: flex;
+      justify-content: center;
+    }
+
     /*outlet*/
     .nav {
       display: none;
