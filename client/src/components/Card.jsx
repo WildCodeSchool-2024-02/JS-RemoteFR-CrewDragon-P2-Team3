@@ -5,7 +5,7 @@ import terre from "../assets/bgMain/terreInfo.jpg";
 import venus from "../assets/bgMain/venusInfo.jpg";
 import mars from "../assets/bgMain/marsInfo.jpg";
 import jupiter from "../assets/bgMain/jupiterInfo.jpg";
-import saturne from "../assets/bgMain/saturnInfo.jpg";
+import saturne from "../assets/bgMain/saturneInfo.jpg";
 import uranus from "../assets/bgMain/uranusInfo.jpg";
 
 const PlanetImg = {
