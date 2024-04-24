@@ -102,7 +102,6 @@ function Canva() {
       scene.add(planet);
       planets.current.push(planet);
 
-
       if (cloud) {
         const geometryCloud = new THREE.SphereGeometry(size + 5, 25, 20);
         const materialCloud = new THREE.MeshStandardMaterial({
@@ -115,7 +114,7 @@ function Canva() {
         planet.add(planetCloud);
       }
       if (ring) {
-        const RingGeo = new THREE.TorusGeometry(300, 60, 2, 128);
+        const RingGeo = new THREE.TorusGeometry(2900, 800, 2, 500);
 
         const textureRing = textureLoad.load(ring.texture);
         textureRing.rotation = Math.PI / 2;
@@ -133,7 +132,6 @@ function Canva() {
 
       // Ajout d'un identifiant pour détecter les planètes lors du survol
       planet.userData.isPlanet = true;
-
 
       // Position orbitale
       const updateOrbit = () => {
@@ -367,7 +365,7 @@ function Canva() {
     window.addEventListener("click", onMouseClick);
 
     // Ajout du point de lumière
-    const light = new THREE.PointLight(0xffffff, 390000000);
+    const light = new THREE.PointLight(0xffffff, 380000000);
     scene.add(light);
 
     // Post-processing pour le soleil
