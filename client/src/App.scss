@@ -443,80 +443,96 @@
       justify-content: center;
       canvas {
         overflow-x: hidden;
-        border: solid 5px white;
+
         border-radius: 10px;
         margin-top: 50px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-width: 10px;
+        border-style: solid;
+        border-image: linear-gradient(
+            to right,
+            darkblue,
+            darkviolet,
+            purple,
+            orange,
+            darkorange,
+            #e88527
+          )
+          1;
       }
     }
-    /*Card*/
-    .closeButtonContainer {
+  }
+  /*Card*/
+  .closeButtonContainer {
+    color: red;
+    font-size: 1.5em;
+    margin-left: 350px;
+    cursor: pointer;
+  }
+  .cardInfo {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 15px;
+
+    margin-left: 150px;
+    margin-top: 50px;
+    width: 400px;
+    height: 500px;
+    box-shadow:
+      1px 1px 10px 1px whitesmoke,
+      inset 1px 1px 15px 0px grey,
+      1px 1px 1px 1px black;
+    .infoPlanete {
       color: red;
-      font-size: 1.5em;
-      margin-left: 350px;
-      cursor: pointer;
+      font-size: 1.8rem;
+      text-decoration: underline;
+      font-weight: 900;
     }
-    .cardInfo {
-      display: flex;
-      text-align: center;
-      align-items: center;
-      flex-direction: column;
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 15px;
-      border: solid 1.5px white;
-      margin-left: 150px;
-      margin-top: 50px;
-      width: 400px;
-      height: 500px;
-      .infoPlanete {
-        color: red;
-        font-size: 1.8rem;
-        text-decoration: underline;
-        font-weight: 900;
-      }
-      .image {
-        padding-top: 30px;
-        width: 150px;
-        height: 150px;
-      }
-      .infoText {
-        color: white;
-        font-weight: 900;
-        padding-top: 20px;
-        .info {
-          color: red;
-          text-decoration: underline;
-        }
-      }
+    .image {
+      padding-top: 30px;
+      width: 150px;
+      height: 150px;
     }
-    /*footer*/
-    footer {
+    .infoText {
       color: white;
-      text-align: center;
+      font-weight: 900;
+      padding-top: 20px;
+      .info {
+        color: red;
+        text-decoration: underline;
+      }
     }
-    .teamcontainer {
-      padding: 2rem;
-      display: flex;
-      justify-content: space-around;
-      ul {
-        list-style: none;
-        li {
-          display: flex;
+  }
+  /*footer*/
+  footer {
+    color: white;
+    text-align: center;
+  }
+  .teamcontainer {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    ul {
+      list-style: none;
+      li {
+        display: flex;
 
-          align-items: center;
+        align-items: center;
 
-          padding: 0.4em;
-          display: flex;
-          flex-direction: row;
-          .avatar {
-            width: 50px;
-            border-radius: 50%;
-          }
-          .github {
-            width: 50px;
-            height: 50px;
-          }
+        padding: 0.4em;
+        display: flex;
+        flex-direction: row;
+        .avatar {
+          width: 50px;
+          border-radius: 50%;
+        }
+        .github {
+          width: 50px;
+          height: 50px;
         }
       }
     }
