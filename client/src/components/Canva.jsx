@@ -16,6 +16,10 @@ import jupiterT from "../assets/images/jupiter8k.jpg";
 import saturnT from "../assets/images/saturn8k.jpg";
 import uranusT from "../assets/images/uranus2k.jpg";
 import neptuneT from "../assets/images/neptune2k.jpg";
+import earthCloudTexture from "../assets/images/earthCould8k.jpg";
+
+// Import Anneau Saturne
+import saturnRingTexture from "../assets/images/anneau-saturn.png";
 
 // Import des background
 import backGroundStar0 from "../assets/images/spacebk.jpg";
@@ -28,6 +32,7 @@ import backGroundStar5 from "../assets/images/spaceUP.jpg";
 function Canva() {
   const canvasRef = useRef(null);
   const planets = useRef([]);
+  const clouds = useRef([]); // Ajout d'une référence pour les nuages
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   useEffect(() => {
@@ -80,20 +85,55 @@ function Canva() {
       position,
       orbitSpeed,
       rotationSpeed,
-      planetName
+      planetName,
+      cloud,
+      ring
     ) => {
       const geometry = new THREE.SphereGeometry(size, 320, 320);
       const material = new THREE.MeshStandardMaterial({
         map: textureLoad.load(textureT),
       });
       const planet = new THREE.Mesh(geometry, material);
+      const planetObj = new THREE.Object3D();
+      planet.add(planetObj);
+      planetObj.add(planet);
       planet.name = planetName;
       planet.position.copy(position);
       scene.add(planet);
       planets.current.push(planet);
 
+
+      if (cloud) {
+        const geometryCloud = new THREE.SphereGeometry(size + 5, 25, 20);
+        const materialCloud = new THREE.MeshStandardMaterial({
+          map: textureLoad.load(cloud.texture),
+          transparent: true,
+          opacity: 0.5,
+        });
+        const planetCloud = new THREE.Mesh(geometryCloud, materialCloud);
+        planetCloud.name = "terre";
+        planet.add(planetCloud);
+      }
+      if (ring) {
+        const RingGeo = new THREE.TorusGeometry(300, 60, 2, 128);
+
+        const textureRing = textureLoad.load(ring.texture);
+        textureRing.rotation = Math.PI / 2;
+
+        const RingMat = new THREE.MeshBasicMaterial({
+          map: textureRing,
+          transparent: true,
+          opacity: 0.2,
+        });
+        const Ring = new THREE.Mesh(RingGeo, RingMat);
+
+        planetObj.add(Ring);
+        planetObj.rotation.x = Math.PI / 2;
+      }
+
       // Ajout d'un identifiant pour détecter les planètes lors du survol
       planet.userData.isPlanet = true;
+
 
       // Position orbitale
       const updateOrbit = () => {
@@ -107,7 +147,6 @@ function Canva() {
       const rotatePlanet = () => {
         planet.rotation.y += rotationSpeed;
       };
-
       const animateOrbit = () => {
         updateOrbit();
         rotatePlanet();
@@ -224,7 +263,10 @@ function Canva() {
       new THREE.Vector3(18000, 0, 0),
       0.00002,
       0.006,
-      "terre"
+      "terre",
+      {
+        texture: earthCloudTexture,
+      }
     );
     drawOrbit(18000);
     createPlanet(
@@ -251,7 +293,11 @@ function Canva() {
       new THREE.Vector3(36000, 0, 0),
       0.00004,
       0.001,
-      "saturn"
+      "saturn",
+      false,
+      {
+        texture: saturnRingTexture,
+      }
     );
     drawOrbit(36000);
     createPlanet(
@@ -306,7 +352,11 @@ function Canva() {
       raycaster.setFromCamera(mouse, camera);
       raycaster.params.Points.threshold = 2;
 
-      const intersects = raycaster.intersectObjects([...planets.current, sun]); // Ajout du soleil
+      const intersects = raycaster.intersectObjects([
+        ...planets.current,
+        sun,
+        ...clouds.current,
+      ]);
 
       if (intersects.length > 0) {
         setSelectedPlanet(intersects[0].object.name);
