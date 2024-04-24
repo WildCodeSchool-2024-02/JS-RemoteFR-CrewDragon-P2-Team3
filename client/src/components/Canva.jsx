@@ -185,7 +185,7 @@ function Canva() {
     const vertices = [];
     const verticesSpeed = [];
 
-    for (let i = 0; i < 2000; i += 3) {
+    for (let i = 0; i < 20000; i += 3) {
       const x = THREE.MathUtils.randFloatSpread(10000);
       const y = THREE.MathUtils.randFloatSpread(10000);
       const z = THREE.MathUtils.randFloatSpread(10000);
@@ -204,7 +204,7 @@ function Canva() {
 
     const starsMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
-      size: 10,
+      size: 0.5,
       transparent: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
