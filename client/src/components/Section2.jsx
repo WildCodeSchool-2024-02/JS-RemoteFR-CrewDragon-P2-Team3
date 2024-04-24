@@ -6,7 +6,7 @@ function Section2() {
       <section className="section2">
         <h2>
           Pret Pour le voyage?{" "}
-          <Link to="/Map" className="mapLink">
+          <Link to="/Map#canva" className="mapLink">
             Map
           </Link>
         </h2>
