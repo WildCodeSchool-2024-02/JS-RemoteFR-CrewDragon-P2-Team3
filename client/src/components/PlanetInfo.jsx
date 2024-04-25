@@ -3,7 +3,7 @@ import venus from "../assets/bgMain/venusInfo.jpg";
 import terre from "../assets/bgMain/terreInfo.jpg";
 import mars from "../assets/bgMain/marsInfo.jpg";
 import jupiter from "../assets/bgMain/jupiterInfo.jpg";
-import saturn from "../assets/bgMain/saturneInfo.jpg";
+import saturne from "../assets/bgMain/saturneInfo.jpg";
 import uranus from "../assets/bgMain/uranusInfo.jpg";
 import neptune from "../assets/bgMain/neptuneInfo.jpg";
 
