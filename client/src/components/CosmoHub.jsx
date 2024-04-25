@@ -18,11 +18,13 @@ import curiosity from "../assets/imagesHub/curiosity.jpg";
 import curiosityLanding from "../assets/imagesHub/landingCuriosity.jpg";
 import curiosityWork from "../assets/imagesHub/curiosityWork.png";
 import curiosityView from "../assets/imagesHub/curiosityView.jpg";
+import MenuBar from "./MenuBar";
 
 function CosmoHub() {
   return (
     <main className="CosmoHub">
       <div className="separator">.</div>
+      <MenuBar />
       <h1 className="title-hub">Le systeme Solaire :</h1>
       <div className="img-container">
         <img className="systemImg" src={systemeimg} alt="SystemeSolaire" />
