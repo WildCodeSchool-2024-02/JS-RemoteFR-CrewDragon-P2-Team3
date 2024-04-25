@@ -4,6 +4,7 @@ import terre from "../assets/bgMain/terreInfo.jpg";
 import mars from "../assets/bgMain/marsInfo.jpg";
 import jupiter from "../assets/bgMain/jupiterInfo.jpg";
 import saturn from "../assets/bgMain/saturneInfo.jpg";
+
 import uranus from "../assets/bgMain/uranusInfo.jpg";
 import neptune from "../assets/bgMain/neptuneInfo.jpg";
 
@@ -35,8 +36,8 @@ function PlanetInfo() {
           <p className="planetText">Jupiter</p>
         </div>
         <div className="planets-container">
-          <img className="img" src={saturn} alt="saturn" />
-          <p className="planetText">Saturn</p>
+          <img className="img" src={saturne} alt="saturne" />
+          <p className="planetText">Saturne</p>
         </div>
         <div className="planets-container">
           <img className="img" src={uranus} alt="uranus" />
