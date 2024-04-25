@@ -110,7 +110,7 @@ function Canva() {
       planets.current.push(planet);
 
       if (cloud) {
-        const geometryCloud = new THREE.SphereGeometry(size + 20, 25, 20);
+        const geometryCloud = new THREE.SphereGeometry(size + 3, 25, 20);
         const materialCloud = new THREE.MeshStandardMaterial({
           map: textureLoad.load(cloud.texture),
           transparent: true,
@@ -127,7 +127,6 @@ function Canva() {
       if (ring) {
         const RingGeo = new THREE.TorusGeometry(290, 80, 2, 50);
 
-
         const textureRing = textureLoad.load(ring.texture);
         textureRing.rotation = Math.PI / 2;
 
@@ -143,12 +142,12 @@ function Canva() {
         planetObj.rotation.x = Math.PI / 2;
       }
       if (moon) {
-        const geometryMoon = new THREE.SphereGeometry(400, 25, 20);
+        const geometryMoon = new THREE.SphereGeometry(50, 25, 20);
         const materialMoon = new THREE.MeshStandardMaterial({
           map: textureLoad.load(moonTexture),
         });
         const planetMoon = new THREE.Mesh(geometryMoon, materialMoon);
-        planetMoon.position.x = 3000;
+        planetMoon.position.x = 300;
 
         planetObjMoon.add(planetMoon);
         planet.add(planetObjMoon);
@@ -214,7 +213,7 @@ function Canva() {
     const vertices = [];
     const verticesSpeed = [];
 
-    for (let i = 0; i < 2000; i += 3) {
+    for (let i = 0; i < 10000; i += 3) {
       const x = THREE.MathUtils.randFloatSpread(100000);
       const y = THREE.MathUtils.randFloatSpread(100000);
       const z = THREE.MathUtils.randFloatSpread(100000);
@@ -326,7 +325,7 @@ function Canva() {
     createPlanet(
       180,
       saturnT,
-      new THREE.Vector3(3600, 0, 0),
+      new THREE.Vector3(3800, 0, 0),
       0.00004,
       0.001,
       "saturn",
@@ -335,25 +334,25 @@ function Canva() {
         texture: saturnRingTexture,
       }
     );
-    drawOrbit(3600);
+    drawOrbit(3800);
     createPlanet(
       100,
       uranusT,
-      new THREE.Vector3(4000, 0, 0),
+      new THREE.Vector3(4400, 0, 0),
       0.00006,
       0.007,
       "uranus"
     );
-    drawOrbit(4000);
+    drawOrbit(4400);
     createPlanet(
       105,
       neptuneT,
-      new THREE.Vector3(4400, 0, 0),
+      new THREE.Vector3(5000, 0, 0),
       0.00007,
       0.003,
       "neptune"
     );
-    drawOrbit(4400);
+    drawOrbit(5000);
 
     const onMouseMove = (event) => {
       const canvasBounds = canvasRef.current.getBoundingClientRect();
