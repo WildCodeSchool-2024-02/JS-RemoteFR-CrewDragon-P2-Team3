@@ -57,7 +57,9 @@ function MenuBar() {
       <h1>Pour en savoir plus</h1>
       <section className="MenuBar">
         <select className="DropdownMenu" onChange={handlechange}>
-          <option value="">Select a planet</option>
+          <option className="option" value="">
+            Select a planet
+          </option>
           {dropdownOptions.map((item) => (
             <option key={item.id} value={item.id}>
               {item.name}
