@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
+import AudioPlayer from "./AudioPlayer";
 
 import "../App.scss";
 
@@ -10,6 +11,7 @@ function App() {
         <Link to="/Map">Map</Link>
         <Link to="/CosmoHub">CosmoHub</Link>
       </nav>
+      <AudioPlayer />
       <main>
         <Outlet />
       </main>

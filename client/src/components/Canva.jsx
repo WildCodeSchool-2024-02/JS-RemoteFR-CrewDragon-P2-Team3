@@ -16,6 +16,10 @@ import jupiterT from "../assets/images/jupiter8k.jpg";
 import saturnT from "../assets/images/saturn8k.jpg";
 import uranusT from "../assets/images/uranus2k.jpg";
 import neptuneT from "../assets/images/neptune2k.jpg";
+import earthCloudTexture from "../assets/images/earthCould8k.jpg";
+
+// Import Anneau Saturne
+import saturnRingTexture from "../assets/images/anneau-saturn.png";
 
 // Import des background
 import backGroundStar0 from "../assets/images/spacebk.jpg";
@@ -28,6 +32,7 @@ import backGroundStar5 from "../assets/images/spaceUP.jpg";
 function Canva() {
   const canvasRef = useRef(null);
   const planets = useRef([]);
+  const clouds = useRef([]); // Ajout d'une référence pour les nuages
   const [selectedPlanet, setSelectedPlanet] = useState(null);
 
   useEffect(() => {
@@ -50,22 +55,22 @@ function Canva() {
     ]);
 
     const camera = new THREE.PerspectiveCamera(
-      750,
+      75,
       window.innerWidth / window.innerHeight,
       0.1,
-      500000
+      50000
     );
-    camera.position.set(0, 0, 50000);
+    camera.position.set(0, 0, 5000);
 
     // OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.2;
-    controls.maxDistance = 200000;
+    controls.maxDistance = 20000;
 
     // add sun
     const textureLoad = new THREE.TextureLoader();
-    const sunGeometry = new THREE.SphereGeometry(3000, 320, 160);
+    const sunGeometry = new THREE.SphereGeometry(300, 32, 16);
     const sunMaterial = new THREE.MeshBasicMaterial({
       map: textureLoad.load(planetTexture),
     });
@@ -80,17 +85,53 @@ function Canva() {
       position,
       orbitSpeed,
       rotationSpeed,
-      planetName
+      planetName,
+      cloud,
+      ring
     ) => {
-      const geometry = new THREE.SphereGeometry(size, 320, 320);
+      const geometry = new THREE.SphereGeometry(size, 32, 32);
       const material = new THREE.MeshStandardMaterial({
         map: textureLoad.load(textureT),
+        depthWrite: true,
       });
       const planet = new THREE.Mesh(geometry, material);
+      const planetObj = new THREE.Object3D();
+      planet.add(planetObj);
+      planetObj.add(planet);
       planet.name = planetName;
       planet.position.copy(position);
       scene.add(planet);
       planets.current.push(planet);
+
+      if (cloud) {
+        const geometryCloud = new THREE.SphereGeometry(size + 5, 25, 20);
+        const materialCloud = new THREE.MeshStandardMaterial({
+          map: textureLoad.load(cloud.texture),
+          transparent: true,
+          opacity: 0.5,
+          depthWrite: true,
+        });
+        const planetCloud = new THREE.Mesh(geometryCloud, materialCloud);
+        planetCloud.name = "terre";
+        planet.add(planetCloud);
+      }
+      if (ring) {
+        const RingGeo = new THREE.TorusGeometry(290, 80, 2, 50);
+
+        const textureRing = textureLoad.load(ring.texture);
+        textureRing.rotation = Math.PI / 2;
+
+        const RingMat = new THREE.MeshBasicMaterial({
+          map: textureRing,
+          transparent: true,
+          opacity: 0.2,
+          depthWrite: true,
+        });
+        const Ring = new THREE.Mesh(RingGeo, RingMat);
+
+        planetObj.add(Ring);
+        planetObj.rotation.x = Math.PI / 2;
+      }
 
       // Ajout d'un identifiant pour détecter les planètes lors du survol
       planet.userData.isPlanet = true;
@@ -107,7 +148,6 @@ function Canva() {
       const rotatePlanet = () => {
         planet.rotation.y += rotationSpeed;
       };
-
       const animateOrbit = () => {
         updateOrbit();
         rotatePlanet();
@@ -119,7 +159,10 @@ function Canva() {
     // Dessiner l'orbite
     const drawOrbit = (radius) => {
       const segments = 360;
-      const material = new THREE.LineBasicMaterial({ color: 0xffffff });
+      const material = new THREE.LineBasicMaterial({
+        color: 0xffffff,
+        depthWrite: false,
+      });
 
       // Création des points de la ligne
       const points = [];
@@ -133,6 +176,7 @@ function Canva() {
 
       // Ajout des lignes à la scene
       const line = new THREE.Line(geometry, material);
+
       scene.add(line);
     };
 
@@ -142,9 +186,9 @@ function Canva() {
     const verticesSpeed = [];
 
     for (let i = 0; i < 20000; i += 3) {
-      const x = THREE.MathUtils.randFloatSpread(100000);
-      const y = THREE.MathUtils.randFloatSpread(100000);
-      const z = THREE.MathUtils.randFloatSpread(100000);
+      const x = THREE.MathUtils.randFloatSpread(10000);
+      const y = THREE.MathUtils.randFloatSpread(10000);
+      const z = THREE.MathUtils.randFloatSpread(10000);
       vertices.push(x, y, z);
       verticesSpeed.push(
         THREE.MathUtils.randFloatSpread(0.5),
@@ -160,7 +204,7 @@ function Canva() {
 
     const starsMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
-      size: 10,
+      size: 0.5,
       transparent: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
@@ -201,77 +245,84 @@ function Canva() {
 
     // Ajout de nouvelle planètes
     createPlanet(
-      800,
+      80,
       mercuryT,
-      new THREE.Vector3(8000, 0, 0),
+      new THREE.Vector3(800, 0, 0),
       0.00001,
       0.01,
       "mercure"
     );
-    drawOrbit(8000);
+    drawOrbit(800);
     createPlanet(
-      900,
+      90,
       venusT,
-      new THREE.Vector3(12000, 0, 0),
+      new THREE.Vector3(1200, 0, 0),
       0.00003,
       0.008,
       "venus"
     );
-    drawOrbit(12000);
+    drawOrbit(1200);
     createPlanet(
-      1500,
+      150,
       earthT,
-      new THREE.Vector3(18000, 0, 0),
+      new THREE.Vector3(1800, 0, 0),
       0.00002,
       0.006,
-      "terre"
+      "terre",
+      {
+        texture: earthCloudTexture,
+      }
     );
-    drawOrbit(18000);
+    drawOrbit(1800);
     createPlanet(
-      1000,
+      100,
       marsT,
-      new THREE.Vector3(24000, 0, 0),
+      new THREE.Vector3(2400, 0, 0),
       0.00008,
       0.005,
       "mars"
     );
-    drawOrbit(24000);
+    drawOrbit(2400);
     createPlanet(
-      2100,
+      210,
       jupiterT,
-      new THREE.Vector3(30000, 0, 0),
+      new THREE.Vector3(3000, 0, 0),
       0.00001,
       0.002,
       "jupiter"
     );
-    drawOrbit(30000);
+    drawOrbit(3000);
     createPlanet(
-      1800,
+      180,
       saturnT,
-      new THREE.Vector3(36000, 0, 0),
+      new THREE.Vector3(3600, 0, 0),
       0.00004,
       0.001,
-      "saturn"
+      "saturn",
+      false,
+      {
+        texture: saturnRingTexture,
+      }
     );
-    drawOrbit(36000);
+    drawOrbit(3600);
     createPlanet(
-      1000,
+      100,
       uranusT,
-      new THREE.Vector3(40000, 0, 0),
+      new THREE.Vector3(4000, 0, 0),
       0.00006,
       0.007,
       "uranus"
     );
-    drawOrbit(40000);
+    drawOrbit(4000);
     createPlanet(
-      1050,
+      105,
       neptuneT,
-      new THREE.Vector3(44000, 0, 0),
+      new THREE.Vector3(4400, 0, 0),
       0.00007,
       0.003,
       "neptune"
     );
-    drawOrbit(44000);
+    drawOrbit(4400);
 
     const onMouseMove = (event) => {
       const canvasBounds = canvasRef.current.getBoundingClientRect();
@@ -306,7 +357,11 @@ function Canva() {
       raycaster.setFromCamera(mouse, camera);
       raycaster.params.Points.threshold = 2;
 
-      const intersects = raycaster.intersectObjects([...planets.current, sun]); // Ajout du soleil
+      const intersects = raycaster.intersectObjects([
+        ...planets.current,
+        sun,
+        ...clouds.current,
+      ]);
 
       if (intersects.length > 0) {
         setSelectedPlanet(intersects[0].object.name);
@@ -317,7 +372,7 @@ function Canva() {
     window.addEventListener("click", onMouseClick);
 
     // Ajout du point de lumière
-    const light = new THREE.PointLight(0xffffff, 390000000);
+    const light = new THREE.PointLight(0xffffff, 3800000);
     scene.add(light);
 
     // Post-processing pour le soleil
@@ -339,9 +394,6 @@ function Canva() {
       requestAnimationFrame(animate);
       controls.update();
       sun.rotation.y += 0.001;
-      stars.rotation.y += 0.001;
-      stars.rotation.x += 0.001;
-
       sunComposer.render();
     };
     animate();
