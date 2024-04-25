@@ -416,7 +416,7 @@ function Canva() {
       {selectedPlanet && (
         <div
           className="card"
-          style={{ position: "absolute", top: 10, left: -120 }}
+          style={{ position: "absolute", top: 20, left: -120 }}
         >
           <Card planetName={selectedPlanet} onClose={handleCloseCard} />
         </div>

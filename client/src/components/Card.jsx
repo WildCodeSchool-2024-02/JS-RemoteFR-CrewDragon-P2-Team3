@@ -68,20 +68,28 @@ function Card({ planetName, onClose }) {
           X
         </div>
       </div>
-      <div className="infoPlanete">Nom: {planetData.name}</div>
+      <div className="infoPlanete">
+        <h4>Nom: {planetData.name}</h4>
+      </div>
       <img className="image" src={planetImg} alt={planetData.name} />
       <div className="infoText">
-        <span className="info">Information :</span>
-        <br />
-        BodyType: {planetData.bodyType}
-        <br />
-        Dimension: {planetData.dimension}
-        <br />
-        Gravite: {planetData.gravity}
-        <br />
-        Densite: {planetData.density}
-        <br />
-        <span className="info">Description :</span>
+        <span className="info">
+          <h4>Information :</h4>
+        </span>
+        <p>
+          <br />
+          BodyType: {planetData.bodyType}
+          <br />
+          Dimension: {planetData.dimension}
+          <br />
+          Gravite: {planetData.gravity}
+          <br />
+          Densite: {planetData.density}
+          <br />
+        </p>
+        <span className="info">
+          <h4>Description :</h4>
+        </span>
         <p>
           Cette {planetData.bodyType} a une gravite de {planetData.gravity} pour
           une densite de {planetData.density}.{" "}

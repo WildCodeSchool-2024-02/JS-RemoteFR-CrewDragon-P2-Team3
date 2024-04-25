@@ -8,7 +8,7 @@ import "../App.scss";
 
 function Map() {
   useEffect(() => {
-    window.scrollTo(0, 328);
+    window.scrollTo(0, 324);
   }, []);
 
   return (
