@@ -4,6 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Card from "./Card";
 
 // Import des textures
@@ -20,6 +21,9 @@ import earthCloudTexture from "../assets/images/earthCould8k.jpg";
 
 // Import Anneau Saturne
 import saturnRingTexture from "../assets/images/anneau-saturn.png";
+
+// Import ISS
+import Iss from "../assets/images/ISS_stationary.glb";
 
 // Import Lunes
 import moonTexture from "../assets/images/moon8k.jpg";
@@ -91,7 +95,8 @@ function Canva() {
       planetName,
       cloud,
       ring,
-      moon
+      moon,
+      iss
     ) => {
       const geometry = new THREE.SphereGeometry(size, 32, 32);
       const material = new THREE.MeshStandardMaterial({
@@ -147,10 +152,21 @@ function Canva() {
           map: textureLoad.load(moonTexture),
         });
         const planetMoon = new THREE.Mesh(geometryMoon, materialMoon);
-        planetMoon.position.x = 300;
+        planetMoon.position.x = 350;
 
         planetObjMoon.add(planetMoon);
         planet.add(planetObjMoon);
+      }
+      if (iss) {
+        const loader = new GLTFLoader();
+        loader.load(Iss, (gltf) => {
+          const station = gltf.scene;
+          // Redimensionner si nécessaire
+          station.scale.set(0.5, 0.5, 0.5);
+          // Positionner l'ISS
+          station.position.set(0, 0, 200); // Ajustez la position selon vos besoins
+          planet.add(station);
+        });
       }
 
       // Ajout d'un identifiant pour détecter les planètes lors du survol
@@ -301,7 +317,8 @@ function Canva() {
         texture: earthCloudTexture,
       },
       false,
-      { texture: moonTexture }
+      { texture: moonTexture },
+      { loader: Iss }
     );
     drawOrbit(1800);
     createPlanet(
