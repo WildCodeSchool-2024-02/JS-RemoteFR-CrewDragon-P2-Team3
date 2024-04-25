@@ -36,6 +36,11 @@
       font-family: "quantumn";
       font-size: 3em;
     }
+
+    p {
+      color: white;
+      font-size: 1.4rem;
+    }
     /*Header*/
     .header {
       height: 110px;
@@ -229,6 +234,40 @@
       width: 100%;
       background-color: white;
     }
+
+    .AllMenuBar {
+      h1 {
+        font-family: "quantumn";
+        font-size: 3rem;
+        text-align: center;
+        margin-top: 50px;
+      }
+      p {
+        line-height: 1.7;
+      }
+      .MenuBar {
+        border: solid white 1px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        display: flex;
+        padding: 20px;
+        margin-top: 50px;
+        margin-left: 5%;
+        margin-right: 5%;
+        .DropdownMenu {
+          height: 30px;
+        }
+        .Description {
+          background-image: linear-gradient(
+            to right,
+            rgba(0, 162, 255, 0.45),
+            rgba(136, 0, 209, 0.483)
+          );
+          border-radius: 50px;
+        }
+      }
+    }
+
     .title-hub {
       font-family: "quantumn";
       font-size: 3rem;
