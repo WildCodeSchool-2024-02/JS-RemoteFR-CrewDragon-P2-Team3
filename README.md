@@ -32,13 +32,14 @@ Que vous soyez un étudiant, un enseignant ou un passionné d'astronomie, Star W
 ```sh
 npm install
 ```
-
+# API utilisée: 🪐
+[Le système solaire API](https://api.le-systeme-solaire.net/)
 ## Author
 👤 Team
-Darras Sacha 
-Chetot Aurélien 
-Herpoux Franck 
-Laquerriere Fabien
+-Darras Sacha 
+-Chetot Aurélien 
+-Herpoux Franck 
+-Laquerriere Fabien
 
 ![GitHub](https://img.shields.io/badge/GitHub-%23181717.svg?style=plastic&logo=github&logoColor=white)
 
@@ -49,8 +50,8 @@ Laquerriere Fabien
 
 ![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=plastic&logo=linkedin&logoColor=white)
 -https://www.linkedin.com/in/sacha-darras/
- https://www.linkedin.com/in/franck-herpoux/
-https://www.linkedin.com/in/fabien-laquerriere
-https://www.linkedin.com/in/aur%C3%A9lien-chetot-6861852b2/
+-https://www.linkedin.com/in/franck-herpoux/
+-https://www.linkedin.com/in/fabien-laquerriere
+-https://www.linkedin.com/in/aur%C3%A9lien-chetot-6861852b2/
 
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
