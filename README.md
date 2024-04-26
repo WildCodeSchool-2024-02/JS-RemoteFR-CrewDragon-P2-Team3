@@ -43,11 +43,14 @@ npm install
 ## Author
 
 👤 Team
-Ce projet a été réalisé par l'équipe suivante :
--Darras Sacha
--Chetot Aurélien
--Herpoux Franck
--Laquerriere Fabien
+<br>Ce projet a été réalisé par l'équipe suivante :</br>
+
+<ul>
+<li>Darras Sacha</li>
+<li>Chetot Aurélien</li>
+<li>Herpoux Franck</li>
+<li>Laquerriere Fabien</li>
+</ul>
 
 ![GitHub](https://img.shields.io/badge/GitHub-%23181717.svg?style=plastic&logo=github&logoColor=white)
 
