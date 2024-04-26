@@ -36,6 +36,7 @@ npm install
 [Le système solaire API](https://api.le-systeme-solaire.net/)
 ## Author
 👤 Team
+Ce projet a été réalisé par l'équipe suivante :
 -Darras Sacha 
 -Chetot Aurélien 
 -Herpoux Franck 
@@ -49,9 +50,10 @@ npm install
 - [FabienLqr](https://github.com/FabienLqr)
 
 ![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=plastic&logo=linkedin&logoColor=white)
--https://www.linkedin.com/in/sacha-darras/
--https://www.linkedin.com/in/franck-herpoux/
--https://www.linkedin.com/in/fabien-laquerriere
--https://www.linkedin.com/in/aur%C3%A9lien-chetot-6861852b2/
+- [Sacha Darras](https://www.linkedin.com/in/sacha-darras/)
+- [Franck Herpoux](https://www.linkedin.com/in/franck-herpoux/)
+- [Fabien Laquerriere](https://www.linkedin.com/in/fabien-laquerriere)
+- [Aurélien Chetot](https://www.linkedin.com/in/aur%C3%A9lien-chetot-6861852b2/)
 
+N'hésitez pas à nous contacter via LinkedIn pour toute question ou commentaire sur ce projet.
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
