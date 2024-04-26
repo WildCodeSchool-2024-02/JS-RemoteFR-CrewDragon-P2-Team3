@@ -22,21 +22,13 @@
 npm install
 ```
 
-## Run tests
-
-```sh
-npm run test
-```
-
 ## Author
 
 👤 **Darras Sacha Chetot Aurélien Herpoux Franck Laquerriere Fabien**
 
-- Github: [@Sachdarras AurelienChetot Moonlow31 FabienLqr](https://github.com/Sachdarras AurelienChetot Moonlow31 FabienLqr)
+- Github: [@Sachdarras @AurelienChetot @Moonlow31 @FabienLqr](https://github.com/Sachdarras,https://github.com/AurelienChetot,https://github.com/Moonlow31,https://github.com/FabienLqr)
 
-## Show your support
 
-Give a ⭐️ if this project helped you!
 
 ---
 
