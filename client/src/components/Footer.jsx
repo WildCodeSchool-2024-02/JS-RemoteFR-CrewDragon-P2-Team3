@@ -2,6 +2,7 @@ import sacha from "../assets/AvatarFooter/AvatarSacha.jpg";
 import Aurel from "../assets/AvatarFooter/AvatarAUREL.jpg";
 import Franck from "../assets/AvatarFooter/AvatarFranck.jpg";
 import Fabien from "../assets/AvatarFooter/AvatarFab.jpg";
+import github from "../assets/github-mark-c791e9551fe4/github-mark/github-mark-white.png";
 
 const teamlist = [
   {
@@ -50,11 +51,7 @@ function Footer() {
                 <li>{team.firstName}</li>
                 <li>
                   <a href={team.gitHub}>
-                    <img
-                      className="github"
-                      src="/src/assets/icons8-github-50.png"
-                      alt="logo github"
-                    />
+                    <img className="github" src={github} alt="logo github" />
                   </a>
                 </li>
               </li>

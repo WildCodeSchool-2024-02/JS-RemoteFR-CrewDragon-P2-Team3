@@ -43,7 +43,6 @@ function MenuBar() {
   const handlechange = (event) => {
     const selectId = event.target.value;
     if (selectId === "") {
-      // Si "Select a planet" est sélectionné, afficher le premier élément du tableau
       setSelect(dropdownOptions[0]);
     } else {
       const selectBody = dropdownOptions.find(
