@@ -1,6 +1,6 @@
-<h1 align="center">🪐Welcome to Star-Wild: 🪐</h1>
-<h1 align="center">  🪐🪐L'odyssey de la wild🪐🪐</h1>
-![Star-Wild](./client/src/assets/Star-Wild.gif)
+<h1 align="center">🪐Welcome to Star-Wild: L'odyssey de la wild🪐 </h1>
+ </h1>
+<img src="./client/src/assets/Star-Wild.gif" alt="Star Wild" />
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-v.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/team3/team3#readme" target="_blank">
