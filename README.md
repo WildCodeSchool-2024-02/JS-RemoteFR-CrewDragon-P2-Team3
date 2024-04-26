@@ -1,87 +1,59 @@
-# team3
+<h1 align="center">Welcome to Star-Wild: 👋</h1>
+<h1 align="center">  L'odyssey de la wild👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-v.1-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/team3/team3#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/team3/team3/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/Sachdarras AurelienChetot Moonlow31 FabienLqr/Star-Wild" />
+  </a>
+</p>
 
-This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
+>Bienvenue sur Star Wild, votre passerelle virtuelle vers les merveilles et les mystères du système solaire, présentée dans une expérience immersive en 3D. Explorez les planètes, les lunes et les astéroïdes avec un système de carte interactif qui vous permet de plonger dans les détails de chaque corps céleste.
 
-## Setup & Use
+Naviguez à travers un univers tridimensionnel époustouflant où chaque planète et chaque lune sont représentées avec un réalisme saisissant. Lorsque vous cliquez sur une planète ou une lune dans la carte interactive, une fenêtre détaillée apparaît, vous offrant une description approfondie, des images haute résolution et des données scientifiques fascinantes.
 
-**Windows users:** be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
+Découvrez les caractéristiques uniques de chaque corps céleste, telles que la composition atmosphérique, la surface, la température et la présence éventuelle de vie. Apprenez-en davantage sur les missions d'exploration passées et actuelles, ainsi que sur les découvertes scientifiques les plus récentes.
 
+Que vous soyez un étudiant, un enseignant ou un passionné d'astronomie, Star Wild vous offre une expérience éducative captivante et instructive. Explorez les confins de notre système solaire et plongez dans l'univers infini de la science et de la découverte !
+
+### 🏠 Homepage
+[star-wild.netlify.app](https://star-wild.netlify.app/)
+
+
+# 💻 Tech Stack:![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=plastic&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=plastic&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=plastic&logo=css3&logoColor=white) ![GithubPages](https://img.shields.io/badge/github%20pages-121013?style=plastic&logo=github&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=plastic&logo=npm&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=plastic&logo=node.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=plastic&logo=react&logoColor=%2361DAFB) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=plastic&logo=figma&logoColor=white)![Three.js](https://img.shields.io/badge/Three.js-%23000000.svg?style=plastic&logo=three.js&logoColor=white)![SCSS](https://img.shields.io/badge/SCSS-%23CC6699.svg?style=plastic&logo=sass&logoColor=white)![GitHub](https://img.shields.io/badge/GitHub-%23181717.svg?style=plastic&logo=github&logoColor=white)![Git Bash](https://img.shields.io/badge/Git_Bash-%23121013.svg?style=plastic&logo=git&logoColor=white)
+
+## Install
+
+```sh
+npm install
 ```
-git config --global core.eol lf
-git config --global core.autocrlf false
-```
+# API utilisée: 🪐
+[Le système solaire API](https://api.le-systeme-solaire.net/)
+## Author
+👤 Team
+Ce projet a été réalisé par l'équipe suivante :
+-Darras Sacha 
+-Chetot Aurélien 
+-Herpoux Franck 
+-Laquerriere Fabien
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm install`
-- Create environment files (`.env`) in both `server` and `client`: you can copy `.env.sample` files as starters (**don't** delete them)
+![GitHub](https://img.shields.io/badge/GitHub-%23181717.svg?style=plastic&logo=github&logoColor=white)
 
-### Available Commands
+- [Sachdarras](https://github.com/Sachdarras)
+- [AurelienChetot](https://github.com/AurelienChetot)
+- [Moonlow31](https://github.com/Moonlow31)
+- [FabienLqr](https://github.com/FabienLqr)
 
-- `db:migrate` : Run the database migration script
-- `db:seed` : Run the database seed script
-- `dev` : Starts both servers (client + server) in one terminal
-- `dev:client` : Starts the React client
-- `dev:back` : Starts the Express server
-- `lint` : Runs validation tools (will be executed on every _commit_, and refuse unclean code)
+![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=plastic&logo=linkedin&logoColor=white)
+- [Sacha Darras](https://www.linkedin.com/in/sacha-darras/)
+- [Franck Herpoux](https://www.linkedin.com/in/franck-herpoux/)
+- [Fabien Laquerriere](https://www.linkedin.com/in/fabien-laquerriere)
+- [Aurélien Chetot](https://www.linkedin.com/in/aur%C3%A9lien-chetot-6861852b2/)
 
-## FAQ
-
-### Tools
-
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
-
-## Deployment with Traefik
-
-> ⚠️ Prerequisites : You must have installed and configured Traefik on your VPS beforehand.
-> https://github.com/WildCodeSchool/vps-traefik-starter-kit/
-
-For deployment, you have to go to `secrets` → app `actions` on the github repo to insert via `New repository secret` :
-
-- SSH_HOST : IP address of your VPS
-- SSH_USER : SSH login to your VPS
-- SSH_PASSWORD : SSH connection password to your VPS
-
-And a public variable from the tab `/settings/variables/actions` :
-
-- PROJECT_NAME : the name of the project used to create the subdomain.
-
-> ⚠️ Warning : underscores are not allowed. They can cause trouble with the let's encrypt certificate
-
-Use this same tab to add the other environment variables required for the project if any.
-
-Only the server will be accessible. The root path `"/"` will redirect to the dist folder of your client. In order to allow that, please uncomment the line as explained in `server/src/app.js` (Line 102).
-Because the server will also serve the client, the global variable VITE_SERVER_URL will be set with an empty string.
-
-Your url will be ` https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
-
-### About the database
-
-The database is automaticaly deployed with the name of your repo. During the build of the projet (`docker-entry.sh`), the `node migrate.js` command is executed in the server. If you want to seed automaticaly your database using the `seed.js` script, replace the `cd ./server && node ./bin/migrate.js && node index.js` by `cd ./server && node ./bin/migrate.js && node ./bin/seed.js && node index.js`
-
-### About public assets (pictures, fonts...)
-
-Don't use any public folder on your client. This folder won't be accessible online. You may move your public assets in the `server/public` folder. Prefer [static assets](https://vitejs.dev/guide/assets) when possible.
-
-### About Specific Environment Variables (e.g., Email)
-
-Students should use the template provided in the `*.env.sample*` file as `<PROJECT_NAME><SPECIFIC_NAME>=<THE_VARIABLE>`.
-
-> ⚠️ **Warning:** The `PROJECT_NAME` should match the one used in the Git public variable.
-
-To add it during deployment, follow these 2 steps:
-
-- Add the following variable to the `docker-compose.prod.yml` file (as shown in the example: `PROJECT_NAME_SPECIFIC_NAME: ${PROJECT_NAME_SPECIFIC_NAME}`).
-- Connect to your server via SSH. Open the global `.env` file in Traefik (`nano ./traefik/data/.env`). Add the variable with the correct value and save the file.
-- Afterward, you can initiate automatic deployment. Docker will not refresh during this process.
-
-### About Logs
-
-If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
-Then, go on your specific project and run  `docker compose logs -t -f`.
+N'hésitez pas à nous contacter via LinkedIn pour toute question ou commentaire sur ce projet.
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
