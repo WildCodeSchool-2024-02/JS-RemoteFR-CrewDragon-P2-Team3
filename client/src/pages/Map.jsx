@@ -6,7 +6,7 @@ import "../App.scss";
 
 function Map() {
   useEffect(() => {
-    window.scrollTo(0, 324);
+    window.scrollTo(0, 398);
   }, []);
 
   return (
