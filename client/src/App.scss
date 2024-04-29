@@ -673,25 +673,38 @@
     1px 1px 10px 1px whitesmoke,
     inset 1px 1px 15px 0px grey,
     1px 1px 1px 1px black;
+  animation: float 10s infinite;
   .infoPlanete {
     color: yellow;
     text-decoration: underline;
   }
-  .image {
-    margin-top: 20px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: solid 0.3px white;
-  }
-  .infoText {
-    color: white;
-    padding-top: 10px;
-  }
+}
+.image {
+  margin-top: 20px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: solid 0.3px white;
+}
+.infoText {
+  color: white;
+  padding-top: 10px;
+}
 
-  .info {
-    color: yellow;
-    text-decoration: underline;
+.info {
+  color: yellow;
+  text-decoration: underline;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }
 
