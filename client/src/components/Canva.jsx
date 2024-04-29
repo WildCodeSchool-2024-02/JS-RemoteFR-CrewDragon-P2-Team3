@@ -17,6 +17,8 @@ import jupiterT from "../assets/images/jupiter8k.jpg";
 import saturnT from "../assets/images/saturn8k.jpg";
 import uranusT from "../assets/images/uranus2k.jpg";
 import neptuneT from "../assets/images/neptune2k.jpg";
+import Cosmo from "../assets/images/Cosmo.jpg";
+import message from "../assets/images/message.png";
 import earthCloudTexture from "../assets/images/earthCould8k.jpg";
 
 // Import Anneau Saturne
@@ -84,6 +86,31 @@ function Canva() {
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     sun.name = "soleil"; // Ajout du nom
     scene.add(sun);
+
+    // Cosmo
+    const geoCosmo = new THREE.PlaneGeometry(10, 8);
+    const matCosmo = new THREE.MeshBasicMaterial({
+      map: textureLoad.load(Cosmo),
+      side: THREE.DoubleSide,
+      color: 0xcccccc,
+      emissive: new THREE.Color(0x0c0c0c),
+      shininess: 0,
+    });
+    const cosmos = new THREE.Mesh(geoCosmo, matCosmo);
+    scene.add(cosmos);
+
+    // Mess
+    const geoMess = new THREE.PlaneGeometry(14, 10);
+    const matMess = new THREE.MeshBasicMaterial({
+      map: textureLoad.load(message),
+      side: THREE.DoubleSide,
+      color: 0xcccccc,
+      emissive: new THREE.Color(0x0c0c0c),
+      shininess: 0,
+    });
+    const messages = new THREE.Mesh(geoMess, matMess);
+    messages.position.y += 9;
+    scene.add(messages);
 
     // Création des planètes
     const createPlanet = (
@@ -183,13 +210,14 @@ function Canva() {
       // Rotation sur elle-même
       const rotatePlanet = () => {
         planet.rotation.y += rotationSpeed;
+        cosmos.rotation.y += 0.0002;
         if (moon) {
           // Rotation de moon
           planetObjMoon.rotation.y += -0.0001;
         }
         if (cloud) {
           // Rotation des nuages
-          planetObj.rotation.y += -0.0009;
+          planetObj.rotation.y += 0.0009;
         }
       };
       const animateOrbit = () => {
@@ -293,7 +321,7 @@ function Canva() {
       mercuryT,
       new THREE.Vector3(800, 0, 0),
       0.00001,
-      0.01,
+      0.0001,
       "mercure"
     );
     drawOrbit(800);
@@ -302,7 +330,7 @@ function Canva() {
       venusT,
       new THREE.Vector3(1200, 0, 0),
       0.00003,
-      0.008,
+      0.0008,
       "venus"
     );
     drawOrbit(1200);
@@ -326,7 +354,7 @@ function Canva() {
       marsT,
       new THREE.Vector3(2400, 0, 0),
       0.00008,
-      0.005,
+      0.0005,
       "mars"
     );
     drawOrbit(2400);
@@ -335,7 +363,7 @@ function Canva() {
       jupiterT,
       new THREE.Vector3(3000, 0, 0),
       0.00001,
-      0.002,
+      0.0002,
       "jupiter"
     );
     drawOrbit(3000);
@@ -344,7 +372,7 @@ function Canva() {
       saturnT,
       new THREE.Vector3(3800, 0, 0),
       0.00004,
-      0.001,
+      0.0001,
       "saturn",
       false,
       {
@@ -357,7 +385,7 @@ function Canva() {
       uranusT,
       new THREE.Vector3(4400, 0, 0),
       0.00006,
-      0.007,
+      0.0007,
       "uranus"
     );
     drawOrbit(4400);
@@ -366,7 +394,7 @@ function Canva() {
       neptuneT,
       new THREE.Vector3(5000, 0, 0),
       0.00007,
-      0.003,
+      0.0003,
       "neptune"
     );
     drawOrbit(5000);
